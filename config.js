@@ -9,21 +9,21 @@
 const SITE_CONFIG = {
   brand: {
     name: 'Growlancer Agency',
-    logo: 'assets/logo.png',
+    logo: 'assets/logo.jpg',
     favicon: 'assets/favicon.png'
   },
 
   social: {
-    facebook: { enabled: false, url: '', icon: 'assets/facebook.png', label: 'Facebook' },
-    whatsapp: { enabled: false, url: '', icon: 'assets/whatsapp.png', label: 'WhatsApp' },
+    facebook: { enabled: false, url: '', icon: 'assets/facebook.png', label: 'https://www.facebook.com/growlanceragency' },
+    whatsapp: { enabled: false, url: '', icon: 'assets/whatsapp.png', label: '09638-397712' },
     instagram: { enabled: false, url: '', icon: 'assets/instagram.png', label: 'Instagram' },
-    email: { enabled: false, url: '', icon: 'assets/email.png', label: 'Email' }
+    email: { enabled: false, url: '', icon: 'assets/email.png', label: 'growlanceragency@gmail.com' }
   },
 
   sendMoney: {
     bKash: { enabled: true, number: '01400101005', logo: 'assets/bkash.png', fallbackIcon: 'bK' },
     Nagad: { enabled: true, number: '01400101005', logo: 'assets/nagad.png', fallbackIcon: 'N' },
-    Rocket: { enabled: true, number: '01400101005', logo: 'assets/rocket.png', fallbackIcon: 'R' }
+    Rocket: { enabled: true, number: '01400101005', logo: 'assets/rocket.jpg', fallbackIcon: 'R' }
   },
 
   services: {
