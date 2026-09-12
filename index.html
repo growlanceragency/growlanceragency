@@ -588,6 +588,22 @@ body{overflow-x:hidden}
 .demo-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .demo-gallery-grid img{width:100%;border-radius:16px;display:block;object-fit:cover;border:1px solid rgba(255,255,255,.08)}
 @media(max-width:600px){.demo-gallery-grid{grid-template-columns:1fr}.demo-gallery-box{padding:18px}}
+
+/* FINAL SERVICE HEADER ALIGNMENT FIX — keeps all other sections unchanged */
+.service-page-head{align-items:center !important;}
+.service-heading{align-items:center !important;}
+.service-title-wrap .service-icon{margin:0 !important;}
+.service-icon{flex:0 0 58px !important;width:58px !important;height:58px !important;min-width:58px;min-height:58px;margin:0 !important;border-radius:14px;display:grid !important;place-items:center !important;line-height:1 !important;overflow:hidden;}
+.service-icon img{width:42px !important;height:42px !important;object-fit:contain;display:block;margin:0 !important;}
+.service-heading>div{display:flex;flex-direction:column;justify-content:center;min-height:58px;}
+@media(max-width:600px){
+  .service-page-head{align-items:center !important;}
+  .service-heading{align-items:center !important;}
+  .service-heading h3{margin:3px 0 0 !important;}
+  .service-icon{flex-basis:52px !important;width:52px !important;height:52px !important;min-width:52px;min-height:52px;}
+  .service-icon img{width:38px !important;height:38px !important;}
+  .service-heading>div{min-height:52px;}
+}
 </style>
 </head>
 <body>
