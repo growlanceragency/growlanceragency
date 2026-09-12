@@ -1274,7 +1274,8 @@ function renderContactLinks(){
   const wrap=document.getElementById('contactSocials');
   if(!wrap)return;
   const items=Object.entries(SITE_CONFIG.social||{});
-  wrap.innerHTML=items.filter(([_,x])=>x&&x.enabled&&x.url).map(([key,x])=>{
+  // URL থাকলেই account দেখাবে; enabled false থাকলে শুধু ইচ্ছাকৃতভাবে hide করা যাবে।
+  wrap.innerHTML=items.filter(([_,x])=>x&&x.url&&x.enabled!==false).map(([key,x])=>{
     const label=x.label||key;
     const fallback=(label||key||'S').charAt(0).toUpperCase();
     const icon=x.icon
