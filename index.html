@@ -87,7 +87,7 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.1;margin:9px 0 12px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.stat{padding:23px;border-radius:20px;text-align:center}.stat strong{font-size:30px}.stat span{display:block;color:var(--muted);font-size:12px}
 .final-cta{padding:45px;border-radius:30px;text-align:center;background:linear-gradient(135deg,rgba(12,146,255,.18),rgba(0,198,255,.06));border:1px solid rgba(12,146,255,.25)}
 .socials{display:flex;justify-content:center;gap:12px;margin:24px 0}.social{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid var(--border);font-weight:800}
-footer{padding:35px 0 28px;border-top:1px solid rgba(255,255,255,.08);margin-top:40px}
+footer{padding:24px 0 18px;border-top:1px solid rgba(255,255,255,.08);margin-top:28px}
 .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;color:#92a4b8;font-size:13px}
 .footer-links{display:flex;gap:18px}
 .search-box{display:none;position:fixed;inset:0;background:rgba(1,6,12,.72);backdrop-filter:blur(12px);z-index:50;padding:20vh 6%}
@@ -603,6 +603,27 @@ body{overflow-x:hidden}
   .service-icon{flex-basis:52px !important;width:52px !important;height:52px !important;min-width:52px;min-height:52px;}
   .service-icon img{width:38px !important;height:38px !important;}
   .service-heading>div{min-height:52px;}
+}
+
+/* PREMIUM SCROLL REVEAL — subtle and lightweight */
+html{scroll-behavior:auto;}
+.service-page,.section-head,.featured-service,.why-main,.point,.stat,.final-cta,.demo,.review-card{
+  opacity:1;
+  transform:none;
+}
+.js-reveal-ready .service-page,.js-reveal-ready .section-head,.js-reveal-ready .featured-service,.js-reveal-ready .why-main,.js-reveal-ready .point,.js-reveal-ready .stat,.js-reveal-ready .final-cta,.js-reveal-ready .demo,.js-reveal-ready .review-card{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .45s ease,transform .45s ease;
+  will-change:opacity,transform;
+}
+.js-reveal-ready .is-visible{
+  opacity:1 !important;
+  transform:none !important;
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto !important}
+  .js-reveal-ready .service-page,.js-reveal-ready .section-head,.js-reveal-ready .featured-service,.js-reveal-ready .why-main,.js-reveal-ready .point,.js-reveal-ready .stat,.js-reveal-ready .final-cta,.js-reveal-ready .demo,.js-reveal-ready .review-card{opacity:1;transform:none;transition:none}
 }
 </style>
 </head>
@@ -1236,33 +1257,45 @@ function setupPackageControls(){
     const buttons=[...tabs.querySelectorAll('button')];
     buttons.forEach(btn=>btn.addEventListener('click',()=>switchServicePackage(btn)));
 
-    let startX=0,startY=0,lastX=0,tracking=false;
-    const begin=(x,y)=>{startX=x;startY=y;lastX=x;tracking=true;};
+    let startX=0,startY=0,tracking=false,moved=false,pointerId=null;
+    const begin=(x,y,id)=>{
+      startX=x;startY=y;tracking=true;moved=false;pointerId=id;
+      try{tabs.setPointerCapture?.(id)}catch(e){}
+    };
     const move=(x,y,e)=>{
       if(!tracking)return;
-      lastX=x;
       const dx=x-startX,dy=y-startY;
-      if(Math.abs(dx)>12 && Math.abs(dx)>Math.abs(dy) && e && e.cancelable)e.preventDefault();
+      if(Math.abs(dx)>10 && Math.abs(dx)>Math.abs(dy)){
+        moved=true;
+        if(e && e.cancelable)e.preventDefault();
+      }
     };
-    const finish=(x,y)=>{
+    const finish=(x,y,e)=>{
       if(!tracking)return;
-      tracking=false;
       const dx=x-startX,dy=y-startY;
-      if(Math.abs(dx)<35 || Math.abs(dx)<=Math.abs(dy))return;
+      tracking=false;
+      try{if(pointerId!=null)tabs.releasePointerCapture?.(pointerId)}catch(err){}
+      pointerId=null;
+      if(Math.abs(dx)<30 || Math.abs(dx)<=Math.abs(dy))return;
       const active=tabs.querySelector('button.active')||buttons[0];
       const i=buttons.indexOf(active);
       const n=Math.max(0,Math.min(buttons.length-1,i+(dx<0?1:-1)));
-      if(n!==i)buttons[n].click();
+      if(n!==i){
+        if(e && e.cancelable)e.preventDefault();
+        buttons[n].click();
+      }
     };
 
-    tabs.addEventListener('touchstart',e=>begin(e.touches[0].clientX,e.touches[0].clientY),{passive:true});
-    tabs.addEventListener('touchmove',e=>move(e.touches[0].clientX,e.touches[0].clientY,e),{passive:false});
-    tabs.addEventListener('touchend',e=>finish(e.changedTouches[0].clientX,e.changedTouches[0].clientY),{passive:true});
-    tabs.addEventListener('touchcancel',()=>tracking=false,{passive:true});
-
-    tabs.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')begin(e.clientX,e.clientY);},{passive:true});
-    tabs.addEventListener('pointermove',e=>{if(e.pointerType==='mouse')move(e.clientX,e.clientY,e);},{passive:false});
-    tabs.addEventListener('pointerup',e=>{if(e.pointerType==='mouse')finish(e.clientX,e.clientY);},{passive:true});
+    tabs.addEventListener('pointerdown',e=>{
+      if(e.pointerType==='mouse' && e.button!==0)return;
+      begin(e.clientX,e.clientY,e.pointerId);
+    });
+    tabs.addEventListener('pointermove',e=>move(e.clientX,e.clientY,e),{passive:false});
+    tabs.addEventListener('pointerup',e=>finish(e.clientX,e.clientY,e));
+    tabs.addEventListener('pointercancel',()=>{tracking=false;pointerId=null;});
+    tabs.addEventListener('click',e=>{
+      if(moved){e.preventDefault();e.stopPropagation();moved=false;}
+    },true);
 
     const active=tabs.querySelector('button.active')||buttons[0];
     if(active)switchServicePackage(active);
@@ -1450,7 +1483,27 @@ function applySiteConfig(){
   // Search service list is generated from config by searchServices override below.
 }
 
+function initScrollReveal(){
+  const items=[...document.querySelectorAll('.service-page,.section-head,.featured-service,.why-main,.point,.stat,.final-cta,.demo,.review-card')];
+  if(!items.length)return;
+  document.documentElement.classList.add('js-reveal-ready');
+  if(!('IntersectionObserver' in window)){
+    items.forEach(el=>el.classList.add('is-visible'));
+    return;
+  }
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  },{root:null,rootMargin:'0px 0px -8% 0px',threshold:.08});
+  items.forEach(el=>obs.observe(el));
+}
+
 function init(){
+  initScrollReveal();
   applySiteConfig();
   setupPackageControls();
   setupFollower();
