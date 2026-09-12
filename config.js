@@ -9,7 +9,7 @@
 const SITE_CONFIG = {
   brand: {
     name: 'Growlancer Agency',
-    logo: 'assets/logo.png',
+    logo: 'assets/logo.jpg',
     favicon: 'assets/favicon.png'
   },
 
@@ -24,7 +24,7 @@ const SITE_CONFIG = {
   sendMoney: {
     bKash: { enabled: true, number: '01400101005', logo: 'assets/bkash.png', fallbackIcon: 'bK' },
     Nagad: { enabled: true, number: '01400101005', logo: 'assets/nagad.png', fallbackIcon: 'N' },
-    Rocket: { enabled: true, number: '01400101005', logo: 'assets/rocket.png', fallbackIcon: 'R' }
+    Rocket: { enabled: true, number: '01400101005', logo: 'assets/rocket.jpg', fallbackIcon: 'R' }
   },
 
   services: {
