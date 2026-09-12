@@ -1371,8 +1371,8 @@ function initRunningCount(){
  const update=()=>{const n=Math.floor(Math.random()*21)+10;el.animate([{transform:'scale(.9)',opacity:.45},{transform:'scale(1)',opacity:1}],{duration:350,easing:'ease-out'});el.textContent=n;};
  update(); setInterval(update,7000);
 }
-const reviewConfig=SITE_CONFIG.reviews||[];
 function renderReviews(){
+ const reviewConfig=Array.isArray(SITE_CONFIG.reviews)?SITE_CONFIG.reviews.filter(Boolean).slice(0,6):[];
  const track=document.getElementById('reviewsTrack'), dots=document.getElementById('reviewDots');
  if(!track||!dots)return;
  track.innerHTML=reviewConfig.slice(0,6).map((r,idx)=>`
@@ -1380,8 +1380,8 @@ function renderReviews(){
    <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
    <p class="review-text">“${r.text}”</p>
    <div class="review-user">
-    <span class="review-avatar ${r.profile?'':'is-empty'}">${r.profile?`<img src="${r.profile}" alt="${r.name}" onerror="this.remove();this.parentElement.classList.add('is-empty')">`:''}</span>
-    <div><strong>${r.name}</strong><span>${r.role}</span></div>
+    <span class="review-avatar ${(r.profile||r.photo)?'':'is-empty'}">${(r.profile||r.photo)?`<img src="${r.profile||r.photo}" alt="${r.name}" onerror="this.remove();this.parentElement.classList.add('is-empty')">`:''}</span>
+    <div><strong>${r.name||'Client'}</strong><span>${r.role||'Client'}</span></div>
    </div>
   </article>`).join('');
  dots.innerHTML=reviewConfig.slice(0,6).map((_,i)=>`<button type="button" aria-label="Review ${i+1}" data-review="${i}"></button>`).join('');
@@ -1503,7 +1503,6 @@ function initScrollReveal(){
 }
 
 function init(){
-  initScrollReveal();
   applySiteConfig();
   setupPackageControls();
   setupFollower();
@@ -1512,6 +1511,7 @@ function init(){
   initRunningCount();
   renderReviews();
   initSendMoneyLogos();
+  initScrollReveal();
 }
 
 document.addEventListener('keydown',e=>{
