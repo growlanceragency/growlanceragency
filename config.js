@@ -9,7 +9,7 @@
 const SITE_CONFIG = {
   brand: {
     name: 'Growlancer Agency',
-    logo: 'assets/logo.jpg,
+    logo: 'assets/logo.jpg',
     favicon: 'assets/favicon.png'
   },
 
