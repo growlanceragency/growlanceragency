@@ -14,21 +14,21 @@ const SITE_CONFIG = {
   },
 
   social: {
-    facebook: { enabled: false, url: '', icon: 'assets/icons/facebook.png', label: 'Facebook' },
-    whatsapp: { enabled: false, url: '', icon: 'assets/icons/whatsapp.png', label: 'WhatsApp' },
-    instagram: { enabled: false, url: '', icon: 'assets/icons/instagram.png', label: 'Instagram' },
-    email: { enabled: false, url: '', icon: 'assets/icons/email.png', label: 'Email' }
+    facebook: { enabled: false, url: '', icon: 'assets/facebook.png', label: 'Facebook' },
+    whatsapp: { enabled: false, url: '', icon: 'assets/whatsapp.png', label: 'WhatsApp' },
+    instagram: { enabled: false, url: '', icon: 'assets/instagram.png', label: 'Instagram' },
+    email: { enabled: false, url: '', icon: 'assets/email.png', label: 'Email' }
   },
 
   sendMoney: {
-    bKash: { enabled: true, number: '01400101005', logo: 'assets/payment/bkash.png', fallbackIcon: 'bK' },
-    Nagad: { enabled: true, number: '01400101005', logo: 'assets/payment/nagad.png', fallbackIcon: 'N' },
-    Rocket: { enabled: true, number: '01400101005', logo: 'assets/payment/rocket.png', fallbackIcon: 'R' }
+    bKash: { enabled: true, number: '01400101005', logo: 'assets/bkash.png', fallbackIcon: 'bK' },
+    Nagad: { enabled: true, number: '01400101005', logo: 'assets/nagad.png', fallbackIcon: 'N' },
+    Rocket: { enabled: true, number: '01400101005', logo: 'assets/rocket.png', fallbackIcon: 'R' }
   },
 
   services: {
     'Facebook Page Setup': {
-      id: 'service-page', number: 'SERVICE 01', icon: 'f', iconImage: 'assets/icons/facebook-page.png',
+      id: 'service-page', number: 'SERVICE 01', icon: 'f', iconImage: 'assets/facebook-page.png',
       description: 'আপনার business page-কে professional ও ready-to-grow করার complete setup.',
       divider: '',
       demo: { enabled: false, type: 'url', url: '', title: 'Facebook Page Setup Demo', buttonText: 'Demo দেখুন ↗', images: [] },
@@ -41,7 +41,7 @@ const SITE_CONFIG = {
     },
 
     'Website Service': {
-      id: 'service-website', number: 'SERVICE 02', icon: '⌘', iconImage: 'assets/icons/website.png',
+      id: 'service-website', number: 'SERVICE 02', icon: '⌘', iconImage: 'assets/website.png',
       description: 'Clean, modern, responsive ও customer-friendly business website.',
       divider: 'WEBSITE SERVICE',
       demo: { enabled: false, type: 'url', url: '', title: 'Website Service Demo', buttonText: 'Demo দেখুন ↗', images: [] },
@@ -54,7 +54,7 @@ const SITE_CONFIG = {
     },
 
     'Social Media Poster Design': {
-      id: 'service-design', number: 'SERVICE 03', icon: '✦', iconImage: 'assets/icons/poster-design.png',
+      id: 'service-design', number: 'SERVICE 03', icon: '✦', iconImage: 'assets/poster-design.png',
       description: 'একটি single design অথবা নিয়মিত monthly design package, আপনার প্রয়োজন অনুযায়ী।',
       divider: 'SOCIAL MEDIA POSTER DESIGN',
       demo: { enabled: false, type: 'images', url: '', title: 'Social Media Design Samples', buttonText: 'Demo দেখুন ↗', images: [] },
@@ -67,7 +67,7 @@ const SITE_CONFIG = {
     },
 
     'Facebook BD Followers': {
-      id: 'service-followers', number: 'SERVICE 04', icon: '+', iconImage: 'assets/icons/followers.png',
+      id: 'service-followers', number: 'SERVICE 04', icon: '+', iconImage: 'assets/followers.png',
       description: '1K থেকে 20K পর্যন্ত আপনার প্রয়োজনের quantity নির্বাচন করে custom order করুন।',
       divider: 'FACEBOOK BD FOLLOWERS',
       demo: { enabled: false, type: 'url', url: '', title: 'Facebook BD Followers Details', buttonText: 'Details দেখুন ↗', images: [] },
