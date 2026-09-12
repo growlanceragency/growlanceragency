@@ -1,21 +1,22 @@
-Growlancer Agency Website - Final
+GROWLANCER AGENCY — EASY EDIT SYSTEM
 
-GitHub Pages upload:
-1. Create/open a GitHub repository.
-2. Upload index.html to the repository root.
-3. Commit the file.
-4. Go to Settings -> Pages.
-5. Select Deploy from a branch.
-6. Select your main branch and / (root), then Save.
+Main website: index.html
+Easy settings: config.js
+Assets: assets/
 
-This final version is self-contained: index.html is the only required website file.
+IMPORTANT:
+1) Upload ALL files together to GitHub Pages. Keep config.js beside index.html.
+2) To change Logo, Social links, payment numbers/logos, service icons, packages/prices, demos or reviews, edit config.js only.
+3) Put image files in assets/ (or change the path in config.js).
+4) Google Sheets Web App URL remains inside index.html and is already connected.
 
-Editable areas inside index.html include:
-- Service packages and prices
-- Send Money number and method settings
-- bKash/Nagad/Rocket logo paths
-- Contact links
-- Up to 6 client reviews, names, roles and profile image paths
+EXAMPLES:
+- Logo: SITE_CONFIG.brand.logo
+- Facebook: SITE_CONFIG.social.facebook.url + enabled:true
+- bKash number: SITE_CONFIG.sendMoney.bKash.number
+- Service icon: SITE_CONFIG.services['Website Service'].iconImage
+- Demo URL: SITE_CONFIG.services['Website Service'].demo.url and enabled:true
+- Demo gallery: set demo.type='images', enabled:true, and add image paths in demo.images
+- Package price: SITE_CONFIG.services['Website Service'].packages
 
-Current Send Money number: 01400101005
-Methods: bKash, Nagad, Rocket
+If you change Code.gs for Google Sheets, redeploy the Apps Script Web App as a new version.
