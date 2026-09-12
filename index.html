@@ -778,7 +778,7 @@ body{overflow-x:hidden}
   <div class="final-cta glass">
    <span class="kicker">Ready to grow?</span><h2>আপনার Business-এর জন্য শুরু করি?</h2>
    <p style="color:var(--muted);margin:8px auto 0;max-width:600px">Service ও package বেছে নিন, অথবা সরাসরি আমাদের সাথে কথা বলুন।</p>
-   <div class="cta" style="justify-content:center;margin-top:20px"><button class="btn btn-primary" onclick="openOrder('General','Custom','Requirement অনুযায়ী')">অর্ডার করুন</button><a class="btn btn-secondary" href="#" onclick="alert('এখানে আপনার Messenger link বসবে');return false;">Messenger</a></div>
+   <div class="cta" style="justify-content:center;margin-top:20px"><button class="btn btn-primary" onclick="openOrder('General','Custom','Requirement অনুযায়ী')">অর্ডার করুন</button><a class="btn btn-secondary" id="messageButton" href="#" target="_blank" rel="noopener">Message</a></div>
    <div class="socials" id="contactSocials"></div>
   </div>
  </div>
@@ -1272,17 +1272,24 @@ function setupFollower(){
 
 function renderContactLinks(){
   const wrap=document.getElementById('contactSocials');
-  if(!wrap)return;
-  const items=Object.entries(SITE_CONFIG.social||{});
-  // URL থাকলেই account দেখাবে; enabled false থাকলে শুধু ইচ্ছাকৃতভাবে hide করা যাবে।
-  wrap.innerHTML=items.filter(([_,x])=>x&&x.url&&x.enabled!==false).map(([key,x])=>{
-    const label=x.label||key;
-    const fallback=(label||key||'S').charAt(0).toUpperCase();
-    const icon=x.icon
-      ? `<img src="${x.icon}" alt="${label}" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'">`
-      : '';
-    return `<a class="social" href="${x.url}" target="_blank" rel="noopener" aria-label="${label}">${icon}<span class="social-fallback" style="${x.icon?'display:none':''}">${fallback}</span></a>`;
-  }).join('');
+  if(wrap){
+    const items=Object.entries(SITE_CONFIG.social||{});
+    wrap.innerHTML=items.filter(([_,x])=>x&&x.url&&(x.enabled!==false)).map(([key,x])=>{
+      const label=x.label||key;
+      const fallback=(label||key||'S').charAt(0).toUpperCase();
+      const icon=x.icon
+        ? `<img src="${x.icon}" alt="${label}" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'">`
+        : '';
+      return `<a class="social" href="${x.url}" target="_blank" rel="noopener" aria-label="${label}">${icon}<span class="social-fallback" style="${x.icon?'display:none':''}">${fallback}</span></a>`;
+    }).join('');
+  }
+  const mb=document.getElementById('messageButton');
+  const cfg=SITE_CONFIG.messageButton||{};
+  if(mb){
+    if(cfg.enabled!==false && cfg.url){
+      mb.href=cfg.url; mb.textContent=cfg.label||'Message'; mb.style.display='inline-flex'; mb.removeAttribute('onclick');
+    }else{ mb.style.display='none'; }
+  }
 }
 
 function animateCustomerCount(){
