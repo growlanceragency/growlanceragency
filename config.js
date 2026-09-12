@@ -15,10 +15,10 @@ const SITE_CONFIG = {
 
   // URL + enabled=true থাকলেই account দেখাবে। icon/logo optional; না থাকলে letter fallback দেখাবে.
   social: {
-    facebook: { enabled: false, url: '', icon: 'assets/facebook.png', label: 'Facebook' },
-    whatsapp: { enabled: false, url: '', icon: 'assets/whatsapp.png', label: 'WhatsApp' },
+    facebook: { enabled: false, url: 'https://www.facebook.com/growlanceragency', icon: 'assets/facebook.png', label: 'Facebook' },
+    whatsapp: { enabled: false, url: '09638-397712', icon: 'assets/whatsapp.png', label: 'WhatsApp' },
     instagram: { enabled: false, url: '', icon: 'assets/instagram.png', label: 'Instagram' },
-    email: { enabled: false, url: '', icon: 'assets/email.png', label: 'Email' }
+    email: { enabled: false, url: 'growlanceragency@gmail.com', icon: 'assets/email.png', label: 'Email' }
   },
 
   sendMoney: {
