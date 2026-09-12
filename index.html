@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0C92FF">
+<title>Growlancer Agency | Digital Services</title>
+<style>
+:root{
+  --blue:#0C92FF;--blue2:#0066FF;--cyan:#00C6FF;
+  --bg:#050b14;--bg2:#091322;--text:#f7fbff;--muted:#a8b7c9;
+  --glass:rgba(255,255,255,.065);--border:rgba(255,255,255,.12);
+  --radius:24px;--shadow:0 20px 70px rgba(0,0,0,.35)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:
+radial-gradient(circle at 15% 5%,rgba(12,146,255,.16),transparent 30%),
+radial-gradient(circle at 85% 18%,rgba(0,198,255,.10),transparent 25%),var(--bg);
+color:var(--text);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1160px,92%);margin:auto}
+.glass{background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:var(--shadow)}
+header{position:sticky;top:14px;z-index:20;margin:14px auto 0;width:min(1160px,92%);border-radius:18px;padding:12px 16px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.logo-mark{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 8px 28px rgba(12,146,255,.35)}
+.logo-mark span{font-weight:900}
+.nav-links{display:flex;gap:25px;color:#cbd8e7;font-size:14px}
+.nav-actions{display:flex;align-items:center;gap:9px}
+.icon-btn{width:40px;height:40px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:white;cursor:pointer;display:grid;place-items:center}
+.menu{font-size:20px}
+.hero{padding:90px 0 70px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:55px}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border-radius:999px;background:rgba(12,146,255,.1);border:1px solid rgba(12,146,255,.3);color:#9ed8ff;font-size:13px;margin-bottom:20px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 14px var(--blue)}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.04;letter-spacing:-2.5px}
+.gradient{background:linear-gradient(100deg,#fff 15%,#8ed6ff 48%,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:17px;max-width:620px;margin:23px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:13px 19px;border-radius:13px;border:1px solid var(--border);cursor:pointer;font-weight:700;color:white;transition:.25s}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue2));box-shadow:0 12px 32px rgba(12,146,255,.25)}
+.btn-secondary{background:rgba(255,255,255,.05)}
+.btn:hover{transform:translateY(-2px)}
+.hero-visual{min-height:390px;border-radius:30px;padding:18px;position:relative;overflow:hidden}
+.hero-visual:before,.hero-visual:after{content:"";position:absolute;border-radius:50%;filter:blur(25px)}
+.hero-visual:before{width:220px;height:220px;background:rgba(12,146,255,.35);top:-70px;right:-30px}
+.hero-visual:after{width:180px;height:180px;background:rgba(0,198,255,.18);bottom:-60px;left:-30px}
+.cover{height:100%;min-height:350px;border-radius:22px;background:linear-gradient(135deg,rgba(12,146,255,.23),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);position:relative;z-index:1;padding:30px;display:flex;flex-direction:column;justify-content:space-between}
+.mock-top{display:flex;justify-content:space-between;align-items:center}
+.mock-pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.08);font-size:11px;color:#bfe7ff}
+.mock-card{align-self:center;width:88%;padding:22px;border-radius:20px;background:rgba(3,12,24,.52);border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.mock-card h3{font-size:26px;margin-bottom:7px}.mock-card p{font-size:13px;margin:0}
+section{padding:78px 0}
+.section-head{text-align:center;max-width:700px;margin:0 auto 34px}
+.kicker{color:#83cfff;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1.8px}
+h2{font-size:clamp(30px,4vw,46px);line-height:1.1;margin:9px 0 12px}
+.section-head p{color:var(--muted)}
+.services{display:flex;gap:15px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 3px 20px;scrollbar-width:none}
+.services::-webkit-scrollbar{display:none}
+.service{min-width:270px;flex:1;scroll-snap-align:start;padding:24px;border-radius:22px}
+.service.active{border-color:rgba(12,146,255,.45);box-shadow:0 15px 50px rgba(12,146,255,.12)}
+.service-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(12,146,255,.12);border:1px solid rgba(12,146,255,.25);font-size:21px;margin-bottom:22px}
+.service h3{margin-bottom:8px}.service p{font-size:14px;color:var(--muted);margin-bottom:18px}
+.link{color:#8bd4ff;font-weight:700;font-size:14px}
+.package-wrap{position:relative}
+.package-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 3px 25px;scrollbar-width:none}
+.package-track::-webkit-scrollbar{display:none}
+.package{min-width:min(350px,86vw);scroll-snap-align:center;padding:27px;border-radius:25px;position:relative}
+.package.featured{border-color:rgba(12,146,255,.55);box-shadow:0 20px 70px rgba(12,146,255,.15)}
+.badge{position:absolute;top:18px;right:18px;background:linear-gradient(135deg,var(--blue),var(--cyan));padding:5px 9px;border-radius:999px;font-size:10px;font-weight:800}
+.package h3{font-size:24px}.package .for{color:var(--muted);font-size:13px;margin:5px 0 20px}
+.price{font-size:38px;font-weight:900;margin-bottom:18px}.price small{font-size:13px;color:var(--muted);font-weight:500}
+.features{list-style:none;margin-bottom:24px}.features li{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:14px;color:#dce8f4}
+.features li:before{content:"✓";color:#62c7ff;margin-right:9px;font-weight:800}
+.full{width:100%}
+.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.demo{height:230px;border-radius:22px;overflow:hidden;position:relative;padding:20px;display:flex;align-items:flex-end;background:linear-gradient(145deg,rgba(12,146,255,.22),rgba(255,255,255,.04))}
+.demo:nth-child(2){background:linear-gradient(145deg,rgba(0,198,255,.18),rgba(255,255,255,.04))}
+.demo:nth-child(3){background:linear-gradient(145deg,rgba(12,146,255,.10),rgba(255,255,255,.05))}
+.demo div{position:relative;z-index:1}.demo p{font-size:13px;color:#bdd0e2}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+.why-main{padding:32px;border-radius:26px}.why-main p{color:var(--muted);margin-top:12px}
+.points{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.point{padding:22px;border-radius:20px}.point b{display:block;margin-bottom:6px}.point span{font-size:13px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.stat{padding:23px;border-radius:20px;text-align:center}.stat strong{font-size:30px}.stat span{display:block;color:var(--muted);font-size:12px}
+.final-cta{padding:45px;border-radius:30px;text-align:center;background:linear-gradient(135deg,rgba(12,146,255,.18),rgba(0,198,255,.06));border:1px solid rgba(12,146,255,.25)}
+.socials{display:flex;justify-content:center;gap:12px;margin:24px 0}.social{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid var(--border);font-weight:800}
+footer{padding:35px 0 28px;border-top:1px solid rgba(255,255,255,.08);margin-top:40px}
+.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;color:#92a4b8;font-size:13px}
+.footer-links{display:flex;gap:18px}
+.search-box{display:none;position:fixed;inset:0;background:rgba(1,6,12,.72);backdrop-filter:blur(12px);z-index:50;padding:20vh 6%}
+.search-inner{max-width:700px;margin:auto;padding:25px;border-radius:25px}
+.search-inner input{width:100%;background:transparent;border:0;outline:0;color:white;font-size:25px}
+.menu-panel{display:none;position:fixed;right:4%;top:78px;width:220px;padding:12px;border-radius:18px;z-index:40}
+.menu-panel a{display:block;padding:12px;border-radius:10px;color:#d9e5f1}.menu-panel a:hover{background:rgba(255,255,255,.06)}
+.order-modal{display:none;position:fixed;inset:0;background:rgba(1,6,12,.78);backdrop-filter:blur(12px);z-index:60;padding:25px;overflow:auto}
+.modal-card{max-width:560px;margin:7vh auto;padding:28px;border-radius:25px}
+.form-grid{display:grid;gap:12px;margin:20px 0}
+.form-grid input,.form-grid textarea,.form-grid select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:white;outline:none}
+.form-grid textarea{min-height:100px;resize:vertical}
+.close{float:right}
+@media(max-width:850px){
+ .nav-links{display:none}.hero-grid,.why{grid-template-columns:1fr}.hero{padding-top:60px}
+ .demo-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+ header{top:8px}.hero{padding:55px 0 35px}section{padding:55px 0}
+ .hero-visual{min-height:320px}.cover{min-height:280px}
+ .demo-grid{grid-template-columns:1fr}.points{grid-template-columns:1fr}.stats{grid-template-columns:1fr}
+ .footer-row{flex-direction:column;text-align:center}.footer-links{flex-wrap:wrap;justify-content:center}
+ h1{letter-spacing:-1.6px}
+}
+
+/* Compact premium service system */
+.compact-head{margin-bottom:25px}
+.services{padding:4px 2px 15px}
+.service{border:1px solid var(--border);text-align:left;color:var(--text);cursor:pointer;min-height:225px}
+.service.active{background:linear-gradient(145deg,rgba(12,146,255,.13),rgba(255,255,255,.045));border-color:rgba(12,146,255,.55)}
+.service-icon{display:block;width:42px;height:42px;text-align:center;line-height:42px;margin-bottom:18px}
+.service h3{font-size:18px}
+.service p{font-size:13px;line-height:1.65}
+.package-tabs{display:flex;justify-content:center;gap:4px;width:max-content;max-width:100%;margin:0 auto 15px;padding:4px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.035)}
+.tab{border:0;background:transparent;color:#9eb0c3;padding:9px 18px;border-radius:999px;cursor:pointer;font-weight:700;font-size:13px}
+.tab.active{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;box-shadow:0 8px 24px rgba(12,146,255,.22)}
+.package-panel{display:grid;grid-template-columns:1fr 330px;gap:22px;padding:25px;border-radius:25px;max-width:980px;margin:auto}
+.package-label{font-size:11px;letter-spacing:1.6px;color:#70caff;font-weight:800}
+.package-copy h3{font-size:23px;margin-top:5px}
+.package-copy #packageFor{color:var(--muted);font-size:13px}
+.package-copy .price{font-size:34px;margin:12px 0}
+.features{margin-bottom:20px}
+.features li{font-size:13px;padding:7px 0}
+.demo-mini{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.035);border-radius:20px;padding:13px;display:flex;flex-direction:column;justify-content:space-between;min-height:230px}
+.demo-mini-screen{min-height:155px;border-radius:14px;background:linear-gradient(145deg,rgba(12,146,255,.25),rgba(255,255,255,.04));border:1px solid rgba(12,146,255,.22);padding:18px;display:flex;flex-direction:column;justify-content:flex-end}
+.demo-mini-screen span{font-size:9px;color:#8dd6ff;letter-spacing:1px;margin-bottom:6px}
+.demo-mini-screen b{font-size:17px}
+.demo-mini .btn{padding:10px;font-size:13px}
+.package-note{text-align:center;color:#71869b;font-size:11px;margin-top:12px}
+.custom-box{max-width:980px;margin:auto;padding:25px;border-radius:25px;display:flex;justify-content:space-between;align-items:center;gap:20px;background:linear-gradient(115deg,rgba(12,146,255,.13),rgba(255,255,255,.035))}
+.custom-box h2{font-size:25px}
+.custom-box p{color:var(--muted);font-size:13px;margin-top:4px}
+@media(max-width:700px){
+ .services{margin-right:-4%;padding-right:4%;gap:12px}
+ .service{min-width:255px;min-height:205px;padding:20px}
+ .package-tabs{width:100%;justify-content:space-between}
+ .tab{flex:1;padding:9px 7px;font-size:12px}
+ .package-panel{grid-template-columns:1fr;padding:19px;border-radius:21px}
+ .demo-mini{min-height:180px}
+ .demo-mini-screen{min-height:115px}
+ .custom-box{flex-direction:column;align-items:flex-start;padding:21px}
+ .custom-box .btn{width:100%}
+ h2{font-size:30px}
+ .hero{padding-bottom:40px}
+ .hero-visual{min-height:270px}
+ .cover{min-height:235px;padding:22px}
+ .mock-card{width:100%;padding:17px}
+ .mock-card h3{font-size:21px}
+}
+
+.inline-search{width:min(760px,92%);margin:10px auto 0;padding:12px 16px;border-radius:16px;position:relative;z-index:30}
+.inline-search input{width:100%;border:0;outline:0;background:transparent;color:#fff;font-size:15px;padding:5px}
+.inline-search #searchResult{padding-top:5px}
+.inline-search #searchResult p{color:#8fa3b7;font-size:12px;padding:6px}
+.inline-search #searchResult button{display:flex;justify-content:space-between;width:100%;background:transparent;border:0;color:#dcecff;text-align:left;padding:9px;border-radius:9px;cursor:pointer}
+.inline-search #searchResult button:hover{background:rgba(12,146,255,.1)}
+
+/* v3: customer-first, compact mobile-first design */
+.hero{padding:70px 0 45px}
+.hero-content{max-width:900px;text-align:center}
+.hero-content p{margin:18px auto 25px}
+.hero-content .cta{justify-content:center}
+.hero-trust{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;color:#91b4cf;font-size:11px;margin-top:20px}
+.hero-trust span{padding:5px 0}
+.service-catalog{display:grid;gap:16px}
+.service-block{border-radius:23px;padding:20px}
+.service-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px}
+.service-title-wrap{display:flex;align-items:flex-start;gap:13px}
+.service-title-wrap .service-icon{flex:none;margin:0}
+.mini-kicker{font-size:9px;letter-spacing:1.4px;color:#65c7ff;font-weight:800}
+.service-title-wrap h3{font-size:19px;margin:2px 0 4px}
+.service-title-wrap p{font-size:12px;color:var(--muted);max-width:620px}
+.demo-link{border:1px solid rgba(12,146,255,.28);background:rgba(12,146,255,.07);color:#80d2ff;border-radius:10px;padding:8px 11px;white-space:nowrap;font-size:11px;cursor:pointer}
+.package-row{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 7px;scrollbar-width:none}
+.package-row::-webkit-scrollbar{display:none}
+.mini-package{min-width:190px;flex:1;scroll-snap-align:start;padding:16px;border-radius:17px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);position:relative}
+.mini-package.featured{border-color:rgba(12,146,255,.48);background:linear-gradient(145deg,rgba(12,146,255,.12),rgba(255,255,255,.035))}
+.mini-package>b{position:absolute;right:10px;top:9px;font-size:7px;color:#7ed2ff;letter-spacing:.8px}
+.mini-package>span{display:block;color:#dcecff;font-size:14px;font-weight:800}
+.mini-package strong{display:block;font-size:25px;margin:5px 0 2px}
+.mini-package small{display:block;color:#8ea5ba;font-size:10px;min-height:29px}
+.mini-package button{width:100%;margin-top:12px;padding:9px;border:0;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;font-size:11px;font-weight:800;cursor:pointer}
+.follower-order{display:flex;justify-content:space-between;align-items:center;gap:20px;border-radius:17px;padding:18px;background:rgba(12,146,255,.055);border:1px solid rgba(12,146,255,.16)}
+.follower-order h4{font-size:16px;margin:3px 0}
+.follower-order p{color:var(--muted);font-size:12px;max-width:650px}
+.custom-badge{font-size:8px;letter-spacing:1px;color:#78d0ff;font-weight:800}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:980px;margin:auto}
+.about-card{padding:19px;border-radius:19px;display:flex;gap:15px;align-items:flex-start}
+.about-icon{flex:none;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:rgba(12,146,255,.1);border:1px solid rgba(12,146,255,.25);color:#76ceff;font-size:10px;font-weight:900}
+.about-card h3{font-size:15px;margin-bottom:3px}
+.about-card p{font-size:12px;color:var(--muted)}
+.demo-grid{gap:12px}
+.demo{height:155px;padding:18px}
+.demo-type{font-size:8px;letter-spacing:1.2px;color:#70cbff;font-weight:800}
+.demo h3{font-size:17px;margin:5px 0}
+.demo p{font-size:11px}
+.counter-card{max-width:700px;margin:auto;text-align:center;padding:35px 20px;border-radius:26px;background:linear-gradient(145deg,rgba(12,146,255,.14),rgba(255,255,255,.035))}
+.counter-number{font-size:clamp(50px,12vw,82px);font-weight:950;line-height:1;margin:10px 0;background:linear-gradient(100deg,#fff,#78d2ff,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.counter-card p{color:#c2d3e4;font-size:14px}.counter-card small{color:#7f94a9;font-size:11px}
+.counter-line{height:1px;background:rgba(255,255,255,.08);margin:20px auto;width:min(380px,85%)}
+.counter-line span{display:block;height:1px;width:45%;margin:auto;background:var(--blue);box-shadow:0 0 15px var(--blue)}
+.modal-help{font-size:12px;color:var(--muted);margin-top:4px}
+.selected-summary{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px;margin:18px 0 4px}
+.selected-summary>div{padding:11px;border-radius:13px;background:rgba(12,146,255,.07);border:1px solid rgba(12,146,255,.15)}
+.selected-summary span{display:block;color:#7891a7;font-size:9px;text-transform:uppercase;letter-spacing:.7px}
+.selected-summary strong{display:block;font-size:12px;margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.form-grid label{display:block;color:#b9cce0;font-size:11px}
+.form-grid input,.form-grid textarea,.form-grid select{margin-top:5px}
+.two-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.check-row{display:flex!important;gap:7px;align-items:flex-start}
+.check-row input{width:auto;margin-top:2px}
+.form-note{display:block;color:#71869a;text-align:center;font-size:9px}
+@media(max-width:700px){
+ .hero{padding:48px 0 30px}
+ .hero-content h1{font-size:42px}
+ .hero-content p{font-size:14px}
+ .hero-trust{gap:9px;font-size:10px}
+ .service-block{padding:16px;border-radius:20px}
+ .service-heading{align-items:flex-start}
+ .service-title-wrap .service-icon{width:38px;height:38px;line-height:38px}
+ .service-title-wrap h3{font-size:17px}
+ .demo-link{font-size:10px;padding:7px 9px}
+ .package-row{margin-right:-5px;padding-right:5px}
+ .mini-package{min-width:180px;padding:14px}
+ .follower-order{flex-direction:column;align-items:flex-start}
+ .follower-order .btn{width:100%}
+ .about-grid{grid-template-columns:1fr}
+ .selected-summary{grid-template-columns:1fr 1fr 1fr}
+ .selected-summary>div{padding:9px}
+ .selected-summary strong{font-size:10px}
+ .two-fields{grid-template-columns:1fr}
+}
+
+/* v4 responsive service showcase */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+*{box-sizing:border-box}
+.container{width:min(1120px,calc(100% - 32px));margin-inline:auto}
+.hero-content{width:100%}
+.section-head{width:100%}
+.service-showcase{width:100%;display:grid;gap:14px}
+.featured-service{width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:18px;padding:20px;border-radius:22px}
+.featured-info{min-width:0}
+.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:7px 14px;margin:16px 0;padding:0;list-style:none;color:#9db3c8;font-size:11px}
+.feature-list li:before{content:"✓";color:#62c9ff;font-weight:900;margin-right:7px}
+.package-panel{align-self:stretch;padding:14px;border-radius:18px;background:rgba(4,20,35,.35);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;justify-content:center}
+.package-tabs{display:grid;grid-template-columns:repeat(3,1fr);padding:3px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}
+.package-tabs button{border:0;background:transparent;color:#9eb2c5;border-radius:9px;padding:9px 4px;font-size:11px;font-weight:800;cursor:pointer}
+.package-tabs button.active{color:#fff;background:linear-gradient(135deg,#0C92FF,#0872e9);box-shadow:0 5px 18px rgba(12,146,255,.22)}
+.featured-price{padding:24px 5px 18px}
+.featured-price span,.featured-price small{display:block;color:#8ea6bb;font-size:11px}
+.featured-price strong{display:block;font-size:40px;line-height:1.1;margin:7px 0}
+.demo-link.wide{width:100%}
+.service-swiper-wrap{width:100%;position:relative}
+.service-swiper{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 2px 6px}
+.service-swiper::-webkit-scrollbar{display:none}
+.service-slide{flex:0 0 calc((100% - 24px)/3);min-width:260px;scroll-snap-align:start;padding:17px;border-radius:20px}
+.slide-top{display:flex;align-items:center;gap:11px}
+.slide-top h3{font-size:16px;margin:2px 0}
+.service-slide>p{font-size:11px;color:#9cb1c4;min-height:42px;margin:10px 0}
+.slide-packages{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slide-packages div{padding:9px 6px;border-radius:11px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}
+.slide-packages span,.slide-packages strong{display:block}
+.slide-packages span{font-size:9px;color:#8ea5b9}.slide-packages strong{font-size:13px;margin-top:3px}
+.slide-actions{display:flex;gap:7px;margin-top:12px}.slide-actions .btn{font-size:10px;padding:9px 10px}
+.swipe-hint{text-align:center;color:#6f91a8;font-size:9px;margin-top:6px;letter-spacing:.4px}
+.swipe-hint span{color:#5bc5ff;margin:0 5px}
+.custom-preview{margin-top:12px;padding:14px;border-radius:13px;background:rgba(12,146,255,.055);border:1px solid rgba(12,146,255,.14)}
+.custom-preview span,.custom-preview small{display:block;font-size:8px;color:#68caff;letter-spacing:.8px}.custom-preview strong{display:block;font-size:14px;margin:5px 0}.custom-preview small{color:#8fa6b9;letter-spacing:0}
+.inline-search{width:min(100%,1120px);margin:-4px auto 12px;padding:10px;border-radius:15px;position:relative;z-index:20}
+.inline-search input{width:100%;margin:0}
+.inline-search button{display:flex;width:100%;justify-content:space-between;padding:9px;border:0;border-bottom:1px solid rgba(255,255,255,.06);background:transparent;color:#cfe0ef;font-size:11px}
+@media(max-width:760px){
+ .container{width:calc(100% - 28px)}
+ .featured-service{grid-template-columns:1fr;padding:15px;border-radius:19px}
+ .feature-list{grid-template-columns:1fr 1fr;font-size:10px;gap:6px}
+ .featured-price{padding:17px 3px 13px}
+ .featured-price strong{font-size:34px}
+ .service-slide{flex:0 0 82%;min-width:0}
+ .section-head.compact-head h2{font-size:29px;line-height:1.15}
+ .section-head.compact-head p{font-size:12px;line-height:1.75}
+ .hero-content h1{font-size:39px;line-height:1.12}
+ .hero-content p{font-size:13px;line-height:1.7}
+}
+@media(max-width:420px){
+ .container{width:calc(100% - 22px)}
+ .service-slide{flex-basis:88%}
+ .feature-list{font-size:9.5px}
+ .service-title-wrap h3{font-size:16px}
+ .service-title-wrap p{font-size:10.5px}
+}
+
+/* FINAL SERVICE CAROUSEL */
+.service-carousel-shell{width:100%;max-width:760px;margin:0 auto;overflow:visible}
+.service-carousel{display:flex;flex-direction:column;gap:16px;width:100%;overflow:visible}
+.service-page{flex:0 0 auto;width:100%;min-width:0;padding:18px;border-radius:24px;overflow:hidden}
+.service-page-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.service-heading{display:flex;align-items:center;gap:11px;min-width:0}
+.service-heading>div{min-width:0}
+.service-heading h3{margin:3px 0 0;font-size:20px;line-height:1.2}
+.service-description{margin:11px 0 15px;color:#9eb3c6;font-size:12px;line-height:1.7}
+.service-package-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border:1px solid rgba(255,255,255,.09);background:rgba(4,19,32,.38);border-radius:18px;touch-action:pan-y;user-select:none}
+.service-package-tabs button{border:0;background:transparent;color:#91a8bc;border-radius:13px;padding:12px 5px;font-size:12px;font-weight:800;cursor:pointer}
+.service-package-tabs button.active{color:#fff;background:linear-gradient(135deg,#0C92FF,#0879f0);box-shadow:0 7px 22px rgba(12,146,255,.25)}
+.service-price-card{margin-top:12px;padding:20px 18px 17px;border:1px solid rgba(255,255,255,.09);border-radius:22px;background:linear-gradient(145deg,rgba(21,39,53,.9),rgba(13,27,39,.92));box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+.price-label{font-size:11px;letter-spacing:2px;color:#58c5ff;font-weight:900}
+.service-price-card h4{font-size:27px;line-height:1.2;margin:9px 0 4px}
+.price-subtitle{color:#91a7ba;font-size:12px;margin:0 0 12px}
+.price-row{display:flex;align-items:baseline;gap:8px;margin:8px 0 17px}
+.price-row strong{font-size:43px;line-height:1;font-weight:900}
+.price-row span{font-size:11px;color:#91a7ba}
+.service-benefits{list-style:none;margin:0 0 18px;padding:0}
+.service-benefits li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.065);font-size:12px;color:#d4e0ea}
+.service-benefits li:before{content:"✓";color:#4fc4ff;font-weight:900;margin-right:10px}
+.order-wide{width:100%;min-height:49px}
+.carousel-controls{display:none}
+.carousel-controls button{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.035);color:#bcd1e1;font-size:16px;cursor:pointer}
+.carousel-dots{display:flex;gap:6px}
+.carousel-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18);transition:.25s}
+.carousel-dots span.active{width:18px;border-radius:10px;background:#0C92FF}
+.swipe-hint{display:none}
+.swipe-hint span{color:#5bc5ff;margin:0 4px}
+@media(max-width:760px){
+ .service-carousel-shell{max-width:100%}
+ .service-page{padding:15px;border-radius:20px}
+ .service-heading h3{font-size:17px}
+ .service-description{font-size:11px}
+ .service-package-tabs button{padding:10px 3px;font-size:11px}
+ .service-price-card{padding:18px 15px 15px}
+ .service-price-card h4{font-size:23px}
+ .price-row strong{font-size:37px}
+ .service-benefits li{font-size:11px;padding:9px 0}
+}
+@media(max-width:380px){
+ .service-page-head{align-items:flex-start}
+ .service-page-head .demo-link{font-size:9px;padding:8px}
+ .service-heading h3{font-size:16px}
+ .service-price-card h4{font-size:21px}
+ .price-row strong{font-size:34px}
+}
+
+/* v7 service + order refinements */
+.service-carousel-shell{display:block;overflow:visible;max-width:none}
+.service-catalog{display:grid;gap:18px}
+.service-page{width:100%;min-width:0;padding:18px;border-radius:24px;overflow:hidden;scroll-margin-top:100px}
+.service-page-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.service-heading{display:flex;align-items:center;gap:11px;min-width:0}
+.service-heading>div{min-width:0}
+.service-heading h3{margin:3px 0 0;font-size:20px;line-height:1.2}
+.service-description{margin:11px 0 15px;color:#9eb3c6;font-size:12px;line-height:1.7}
+.service-package-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border:1px solid rgba(255,255,255,.09);background:rgba(4,19,32,.38);border-radius:18px;touch-action:pan-y}
+.service-package-tabs button{border:0;background:transparent;color:#91a8bc;border-radius:13px;padding:12px 5px;font-size:12px;font-weight:800;cursor:pointer}
+.service-package-tabs button.active{color:#fff;background:linear-gradient(135deg,#0C92FF,#0879f0);box-shadow:0 7px 22px rgba(12,146,255,.25)}
+.service-price-card{margin-top:12px;padding:20px 18px 17px;border:1px solid rgba(255,255,255,.09);border-radius:22px;background:linear-gradient(145deg,rgba(21,39,53,.9),rgba(13,27,39,.92));box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+.price-label{font-size:11px;letter-spacing:2px;color:#58c5ff;font-weight:900}
+.service-price-card h4{font-size:27px;line-height:1.2;margin:9px 0 4px}
+.price-subtitle{color:#91a7ba;font-size:12px;margin:0 0 12px}
+.price-row{display:flex;align-items:baseline;gap:8px;margin:8px 0 17px}
+.price-row strong{font-size:43px;line-height:1;font-weight:900}
+.price-row span{font-size:11px;color:#91a7ba}
+.service-benefits{list-style:none;margin:0 0 18px;padding:0}
+.service-benefits li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.065);font-size:12px;color:#d4e0ea}
+.service-benefits li:before{content:"✓";color:#4fc4ff;font-weight:900;margin-right:10px}
+.order-wide{width:100%;min-height:49px}
+.follower-select-row{margin:4px 0 12px}
+.follower-select-row label{display:block;color:#a9bed0;font-size:12px;font-weight:700}
+.follower-select-row select{margin-top:7px;width:100%;padding:12px 13px;border-radius:14px;border:1px solid rgba(12,146,255,.22);background:#102b3b;color:#fff;outline:none;font-size:14px}
+@media(max-width:600px){.service-catalog{gap:14px}.service-page{padding:15px;border-radius:20px}.service-heading h3{font-size:17px}.service-description{font-size:11px}.service-package-tabs button{padding:10px 3px;font-size:11px}.service-price-card{padding:18px 15px 15px}.service-price-card h4{font-size:23px}.price-row strong{font-size:37px}.service-benefits li{font-size:11px;padding:9px 0}}
+
+.order-confirmation{padding-top:8px}.confirm-badge{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(12,146,255,.15);color:#55c7ff;font-size:24px;border:1px solid rgba(12,146,255,.35);margin-bottom:10px}.order-confirmation h3{font-size:24px;margin:0 0 5px}.order-confirmation>p{color:#9eb3c6;font-size:12px;line-height:1.6}.sendmoney-summary{display:flex;justify-content:space-between;align-items:center;padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:15px;margin:15px 0;background:rgba(12,146,255,.06)}.sendmoney-summary strong{font-size:22px}.sendmoney-options{display:grid;gap:8px;margin-bottom:10px}.sendmoney-options label{padding:12px;border:1px solid rgba(255,255,255,.08);border-radius:13px;color:#cfe0ee;font-size:12px}.sendmoney-options input{margin-right:8px}.sendmoney-options b{float:right;color:#58c5ff}.order-confirmation select{width:100%;padding:12px;border-radius:13px;background:#102b3b;color:#fff;border:1px solid rgba(255,255,255,.1)}.sendmoney-note{font-size:10px!important;color:#71869b!important}.confirm-actions{display:grid;gap:8px;margin-top:14px}.confirm-actions .btn{width:100%}
+
+.sendmoney-info{margin-top:9px;padding:13px 14px;border-radius:14px;border:1px solid rgba(12,146,255,.25);background:rgba(12,146,255,.07);display:grid;gap:2px}.sendmoney-info span{font-size:10px;color:#76cfff;text-transform:uppercase;letter-spacing:1px}.sendmoney-info strong{font-size:21px}.sendmoney-info small{font-size:10px;color:#91a7ba}.service-package-tabs{cursor:grab;-webkit-user-select:none;user-select:none}.service-package-tabs:active{cursor:grabbing}
+
+/* v10 order, Send Money and trust upgrades */
+.order-service-select{padding:13px 14px!important;border-radius:12px!important}
+.sendmoney-methods{display:grid;gap:10px;margin:15px 0}
+.sendmoney-box{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:10px;padding:12px 13px;border:1px solid rgba(12,146,255,.22);border-radius:15px;background:linear-gradient(135deg,rgba(12,146,255,.09),rgba(255,255,255,.035))}
+.sendmoney-logo{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);overflow:hidden;font-size:11px;font-weight:900;color:#9edcff}
+.sendmoney-logo img{width:100%;height:100%;object-fit:contain}
+.sendmoney-copy{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.055);color:#fff;cursor:pointer;display:grid;place-items:center}
+.sendmoney-copy:hover{border-color:rgba(12,146,255,.45);background:rgba(12,146,255,.1)}
+.sendmoney-box small{display:block;color:#7f9ab0;font-size:9px;margin-top:1px}.sendmoney-box strong{font-size:15px}
+.sendmoney-instructions{padding:14px 15px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);margin-bottom:13px}
+.sendmoney-instructions h4{font-size:13px;margin-bottom:7px}.sendmoney-instructions ol{padding-left:19px;color:#a9bfd1;font-size:11px;line-height:1.8}
+.sender-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sender-grid label{display:block}.sender-grid input{font-size:14px!important;padding:15px!important}
+.sendmoney-choice{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.sendmoney-choice label{padding:12px;border:1px solid rgba(255,255,255,.08);border-radius:13px;color:#cfe0ee;font-size:12px}.sendmoney-choice input{margin-right:7px}
+.order-service-note{font-size:10px;color:#7891a6;margin-top:-4px}
+.reviews-wrap{position:relative;overflow:hidden}.reviews-track{display:flex;gap:14px;overflow:hidden}.review-card{flex:0 0 min(360px,86vw);padding:20px;border-radius:21px}.review-stars{color:#61c8ff;letter-spacing:2px;font-size:13px}.review-text{color:#c6d5e3;font-size:13px;line-height:1.75;margin:10px 0 15px}.review-user{display:flex;align-items:center;gap:10px}.review-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--cyan));font-weight:900}.review-user strong{display:block;font-size:12px}.review-user span{display:block;color:#7f96a9;font-size:10px}.review-dots{text-align:center;margin-top:14px;color:#6f91a8;font-size:11px}
+.running-card{max-width:700px;margin:16px auto 0;text-align:center;padding:27px 20px;border-radius:24px}.running-number{font-size:clamp(48px,11vw,70px);font-weight:950;line-height:1;background:linear-gradient(100deg,#fff,#78d2ff,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0}
+@media(max-width:600px){.sender-grid{grid-template-columns:1fr}.sendmoney-box{grid-template-columns:38px 1fr 34px}.sendmoney-logo{width:34px;height:34px}.review-card{flex-basis:88vw}}
+</style>
+
+<style id="v13-refinements">
+/* Service separation */
+.service-catalog{gap:0!important}
+.service-page{scroll-margin-top:92px}
+.service-divider{
+  display:flex;align-items:center;gap:12px;
+  margin:14px 4px;
+  color:#6e91a8;font-size:9px;font-weight:900;letter-spacing:1.8px;
+  text-transform:uppercase;
+}
+.service-divider:before,.service-divider:after{
+  content:"";height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,rgba(78,178,230,.28),transparent);
+}
+.service-divider span{
+  padding:7px 12px;border-radius:999px;
+  border:1px solid rgba(12,146,255,.18);
+  background:rgba(12,146,255,.045);
+  white-space:nowrap;
+}
+@media(max-width:600px){
+  .service-divider{margin:13px 2px;font-size:8px;letter-spacing:1.35px}
+  .service-divider span{padding:6px 10px}
+}
+
+/* Order package selector */
+#orderPackageWrap{display:block}
+.order-service-select{width:100%;min-height:48px}
+#orderPackageSelect{cursor:pointer}
+@media(max-width:600px){#orderPackageWrap{margin-top:-2px}}
+
+/* Send Money method picker */
+.sendmoney-method-picker{
+  padding:13px 14px 12px;border:1px solid rgba(12,146,255,.2);
+  border-radius:15px;background:rgba(12,146,255,.055);margin:12px 0 2px;
+}
+.sendmoney-method-picker>span{
+  display:block;font-size:10px;color:#86cfff;font-weight:800;margin-bottom:9px;
+}
+.sendmoney-method-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.sendmoney-method-tabs label{margin:0;cursor:pointer}
+.sendmoney-method-tabs input{position:absolute;opacity:0;pointer-events:none}
+.sendmoney-method-tabs label span{
+  display:block;text-align:center;padding:10px 7px;border-radius:11px;
+  border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);
+  color:#a8bfd1;font-size:11px;font-weight:800;transition:.2s;
+}
+.sendmoney-method-tabs input:checked + span{
+  color:#fff;background:linear-gradient(135deg,#0C92FF,#0879f0);
+  border-color:rgba(12,146,255,.5);box-shadow:0 7px 20px rgba(12,146,255,.2);
+}
+.sendmoney-methods{margin-top:9px!important}
+.sendmoney-box{animation:methodIn .2s ease}
+@keyframes methodIn{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:none}}
+
+/* Reviews: 6 editable slots, profile images, manual + auto swipe */
+.reviews-track{
+  overflow-x:auto!important;overflow-y:hidden!important;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  padding:2px 1px 7px;
+  touch-action:pan-x;
+}
+.reviews-track::-webkit-scrollbar{display:none}
+.review-card{scroll-snap-align:center;flex-basis:min(560px,88vw)!important}
+.review-stars{color:#FFD24A!important;text-shadow:0 0 10px rgba(255,210,74,.18);letter-spacing:2px;font-size:15px}
+.review-user{min-height:42px}
+.review-avatar{
+  width:42px!important;height:42px!important;flex:0 0 42px;
+  background:rgba(12,146,255,.08)!important;
+  border:1px solid rgba(12,146,255,.22);
+  overflow:hidden;
+}
+.review-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.review-avatar.is-empty:before{
+  content:"";width:16px;height:16px;border-radius:50% 50% 45% 45%;
+  background:linear-gradient(180deg,#7fb6d5,#477c9c);
+  box-shadow:0 10px 0 7px #477c9c;
+  transform:translateY(-3px) scale(.58);
+}
+.review-controls{
+  display:flex;align-items:center;justify-content:center;gap:14px;margin-top:9px
+}
+.review-arrow{
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(12,146,255,.2);background:rgba(255,255,255,.035);
+  color:#8fc9e9;font-size:22px;line-height:1;cursor:pointer;
+}
+.review-arrow:active{transform:scale(.95)}
+.review-dots{margin-top:0!important;display:flex;align-items:center;justify-content:center;gap:6px;color:transparent;font-size:0}
+.review-dots button{
+  width:7px;height:7px;padding:0;border:0;border-radius:50%;
+  background:rgba(116,166,193,.35);cursor:pointer;transition:.2s;
+}
+.review-dots button.active{width:20px;border-radius:10px;background:#49bdf8}
+@media(max-width:600px){
+  .review-card{flex-basis:88vw!important;padding:18px}
+  .review-controls{gap:10px}
+}
+
+/* remove accidental visible malformed tag if any legacy text remains */
+body{overflow-x:hidden}
+</style>
+
+
+<style id="v14-sendmoney-simple">
+/* Simple Send Money checkout, inspired by the supplied reference layout */
+.order-confirmation{padding-top:4px}
+.order-confirmation h3{font-size:27px;margin:0 0 4px}
+.sendmoney-lead{font-size:13px!important;line-height:1.6!important;color:#9eb3c6!important;margin-bottom:14px!important}
+.sendmoney-simple-card{padding:15px;border:1px solid rgba(255,255,255,.10);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(12,146,255,.045));box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.sendmoney-simple-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 3px 13px}
+.simple-label{display:block;font-size:10px;color:#8ea6ba;margin-bottom:3px}
+.sendmoney-simple-top strong{display:block;font-size:29px;line-height:1.1;color:#fff}
+.simple-status{font-size:10px;font-weight:800;color:#69ceff;padding:7px 10px;border-radius:999px;background:rgba(12,146,255,.10);border:1px solid rgba(12,146,255,.22)}
+.sendmoney-choice{margin:0 0 12px!important;gap:8px}
+.sendmoney-choice label{display:flex;align-items:center;gap:7px;padding:10px 11px!important;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09)!important;border-radius:12px!important;font-size:11px!important}
+.sendmoney-choice input{accent-color:#0C92FF;margin:0}
+.sendmoney-method-picker{padding:0!important;border:0!important;background:none!important;margin:4px 0 9px!important}
+.sendmoney-method-picker>span{font-size:11px!important;color:#b8cad8!important;margin-bottom:7px!important}
+.sendmoney-method-tabs{gap:7px!important}
+.sendmoney-method-tabs label span{padding:11px 6px!important;border-radius:12px!important;background:rgba(255,255,255,.035)!important;font-size:11px!important}
+.sendmoney-method-tabs input:checked + span{background:linear-gradient(135deg,#0C92FF,#0879f0)!important}
+.sendmoney-methods{margin:0!important}
+.sendmoney-box{grid-template-columns:42px 1fr auto!important;gap:11px!important;padding:13px 12px!important;border-radius:16px!important;background:rgba(12,146,255,.075)!important;border:1px solid rgba(12,146,255,.25)!important}
+.sendmoney-logo{width:42px!important;height:42px!important;border-radius:13px!important;background:rgba(255,255,255,.08)!important}
+.account-details small{font-size:10px!important;color:#8ea6ba!important;margin-bottom:3px!important}
+.account-details strong{font-size:20px!important;letter-spacing:.2px}
+.sendmoney-copy{width:auto!important;min-width:58px;height:38px!important;padding:0 12px!important;border-radius:11px!important;background:#fff!important;color:#0b73d9!important;border:0!important;font-weight:800!important;font-size:12px!important}
+.sendmoney-howto{display:grid;gap:7px;margin:12px 0 13px;padding:11px 12px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}
+.sendmoney-howto div{display:flex;align-items:center;gap:9px;color:#a9bfd0;font-size:11px;line-height:1.45}
+.sendmoney-howto b{width:21px;height:21px;flex:0 0 21px;display:grid;place-items:center;border-radius:50%;background:rgba(12,146,255,.15);color:#63caff;font-size:10px}
+.sendmoney-howto strong{color:#dceaf5}
+.sender-grid{gap:9px!important}
+.sender-grid label{font-size:11px}
+.sender-grid input{margin-top:6px!important;padding:14px 13px!important;border-radius:13px!important;font-size:14px!important;background:rgba(255,255,255,.045)!important}
+.confirm-actions{margin-top:11px!important;gap:8px!important}
+@media(max-width:600px){.modal-card{padding:20px 16px!important;margin:4vh auto!important}.sendmoney-simple-card{padding:13px}.sendmoney-simple-top strong{font-size:27px}.sendmoney-box{grid-template-columns:39px 1fr auto!important}.sendmoney-logo{width:39px!important;height:39px!important}.sendmoney-copy{min-width:55px;padding:0 9px!important}}
+
+<style id="final-sendmoney-amount-fix">
+.sendmoney-simple-top{align-items:flex-start!important}
+.sendmoney-simple-top>div:first-child{flex:1;min-width:0}
+.payable-line{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08);max-width:330px}
+.payable-line span{font-size:10px;color:#9fb4c5}
+.payable-line strong{font-size:18px!important;color:#63caff!important;white-space:nowrap}
+.sender-grid input{color:#fff!important;-webkit-text-fill-color:#fff!important;caret-color:#fff!important}
+.sender-grid input::placeholder{color:rgba(255,255,255,.55)!important;-webkit-text-fill-color:rgba(255,255,255,.55)!important}
+@media(max-width:600px){.payable-line{max-width:100%}.payable-line strong{font-size:17px!important}}
+</style>
+</head>
+<body>
+
+<header class="glass">
+  <nav class="nav">
+    <a class="logo" href="#home"><span class="logo-mark"><span>G</span></span>Growlancer Agency</a>
+    <div class="nav-links">
+      <a href="#services">Services</a><a href="#packages">Packages</a><a href="#demos">Demo</a><a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="openSearch()" aria-label="Search">⌕</button>
+      <button class="icon-btn menu" onclick="toggleMenu()" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+</header>
+
+<div id="menuPanel" class="menu-panel glass">
+  <a href="#home" onclick="toggleMenu()">Home</a><a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#packages" onclick="toggleMenu()">Packages</a><a href="#demos" onclick="toggleMenu()">Demo</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<main id="home">
+
+<section class="hero">
+ <div class="container hero-content">
+  <div class="eyebrow"><span class="dot"></span> Digital services for growing businesses</div>
+  <h1>আপনার Business-এর জন্য <span class="gradient">Professional Digital Presence.</span></h1>
+  <p>Facebook Page Setup, Website, Social Media Design এবং আরও প্রয়োজনীয় digital services, সহজ package ও transparent order process-এর মাধ্যমে।</p>
+  <div class="cta"><a class="btn btn-primary" href="#services">Services দেখুন</a><button class="btn btn-secondary" onclick="openOrder('General','Custom','Requirement অনুযায়ী')">অর্ডার করুন</button></div>
+  <div class="hero-trust"><span>✓ সহজে বুঝুন</span><span>✓ Package compare করুন</span><span>✓ সরাসরি order করুন</span></div>
+ </div>
+</section>
+
+
+
+
+
+<section id="services">
+ <div class="container">
+  <div class="section-head compact-head">
+   <span class="kicker">Our Services</span>
+   <h2>আপনার প্রয়োজন, সহজেই বেছে নিন</h2>
+   <p>সব service একসাথে দেখুন। প্রতিটি service-এর Basic, Premium বা Corporate option হাত দিয়ে swipe অথবা উপরের option চাপ দিয়ে পরিবর্তন করুন।</p>
+  </div>
+  <div class="service-catalog">
+
+   <article class="service-page glass" id="service-page" data-service="Facebook Page Setup">
+    <div class="service-page-head"><div class="service-heading"><span class="service-icon">f</span><div><span class="mini-kicker">SERVICE 01</span><h3>Facebook Page Setup</h3></div></div><button class="demo-link" onclick="openDemo('Facebook Page Setup')">Demo দেখুন ↗</button></div>
+    <p class="service-description">আপনার business page-কে professional ও ready-to-grow করার complete setup.</p>
+    <div class="service-package-tabs" data-package-key="fb">
+     <button class="active" data-pkg="Basic" data-price="৳750" data-sub="নতুন business / উদ্যোক্তার জন্য">Basic</button>
+     <button data-pkg="Premium" data-price="৳1,200" data-sub="Growing business-এর জন্য">Premium</button>
+     <button data-pkg="Corporate" data-price="৳2,000" data-sub="Brand / organization-এর জন্য">Corporate</button>
+    </div>
+    <div class="service-price-card">
+     <span class="price-label">BASIC</span><h4>Facebook Page Setup</h4><p class="price-subtitle">নতুন business / উদ্যোক্তার জন্য</p>
+     <div class="price-row"><strong>৳750</strong><span>starting</span></div>
+     <ul class="service-benefits"><li>Professional Page Setup</li><li>Logo & Cover Setup</li><li>About & Basic Information</li><li>CTA & Category Setup</li><li>Basic SEO Optimization</li></ul>
+     <button class="btn btn-primary order-wide">অর্ডার করুন →</button>
+    </div>
+   </article>
+
+   <div class="service-divider" aria-hidden="true"><span>WEBSITE SERVICE</span></div>
+
+   <article class="service-page glass" id="service-website" data-service="Website Service">
+    <div class="service-page-head"><div class="service-heading"><span class="service-icon">⌘</span><div><span class="mini-kicker">SERVICE 02</span><h3>Website Service</h3></div></div><button class="demo-link" onclick="openDemo('Website Service')">Demo দেখুন ↗</button></div>
+    <p class="service-description">Clean, modern, responsive ও customer-friendly business website.</p>
+    <div class="service-package-tabs" data-package-key="web">
+     <button class="active" data-pkg="Basic" data-price="৳2,500" data-sub="Simple business website-এর জন্য">Basic</button>
+     <button data-pkg="Premium" data-price="৳5,000" data-sub="Growing business-এর জন্য">Premium</button>
+     <button data-pkg="Corporate" data-price="Custom" data-sub="Advanced business website-এর জন্য">Corporate</button>
+    </div>
+    <div class="service-price-card">
+     <span class="price-label">BASIC</span><h4>Website Service</h4><p class="price-subtitle">Simple business website-এর জন্য</p>
+     <div class="price-row"><strong>৳2,500</strong><span>starting</span></div>
+     <ul class="service-benefits"><li>Responsive Website</li><li>Professional Modern Design</li><li>Mobile Friendly Layout</li><li>Essential Business Sections</li><li>Basic Support</li></ul>
+     <button class="btn btn-primary order-wide">অর্ডার করুন →</button>
+    </div>
+   </article>
+
+   <div class="service-divider" aria-hidden="true"><span>SOCIAL MEDIA POSTER DESIGN</span></div>
+
+   <article class="service-page glass" id="service-design" data-service="Social Media Poster Design">
+    <div class="service-page-head"><div class="service-heading"><span class="service-icon">✦</span><div><span class="mini-kicker">SERVICE 03</span><h3>Social Media Poster Design</h3></div></div><button class="demo-link" onclick="openDemo('Social Media Poster Design')">Demo দেখুন ↗</button></div>
+    <p class="service-description">একটি single design অথবা নিয়মিত monthly design package, আপনার প্রয়োজন অনুযায়ী।</p>
+    <div class="service-package-tabs" data-package-key="design">
+     <button class="active" data-pkg="Single Design" data-price="৳250" data-sub="একটি professional social media design">Single</button>
+     <button data-pkg="Monthly Basic" data-price="৳2,000" data-sub="Monthly content-এর জন্য">Monthly</button>
+     <button data-pkg="Monthly Premium" data-price="৳3,500" data-sub="Regular brand content-এর জন্য">Premium</button>
+    </div>
+    <div class="service-price-card">
+     <span class="price-label">SINGLE DESIGN</span><h4>Social Media Poster Design</h4><p class="price-subtitle">একটি professional social media design</p>
+     <div class="price-row"><strong>৳250</strong><span>per design</span></div>
+     <ul class="service-benefits"><li>Professional Poster Design</li><li>Brand-based Creative</li><li>Social Media Ready Size</li><li>Clean Typography & Layout</li><li>Revision Support</li></ul>
+     <button class="btn btn-primary order-wide">অর্ডার করুন →</button>
+    </div>
+   </article>
+
+   <div class="service-divider" aria-hidden="true"><span>FACEBOOK BD FOLLOWERS</span></div>
+
+   <article class="service-page glass" id="service-followers" data-service="Facebook BD Followers">
+    <div class="service-page-head"><div class="service-heading"><span class="service-icon">+</span><div><span class="mini-kicker">SERVICE 04</span><h3>Facebook BD Followers</h3></div></div><button class="demo-link" onclick="openDemo('Facebook BD Followers')">Details দেখুন ↗</button></div>
+    <p class="service-description">1K থেকে 20K পর্যন্ত আপনার প্রয়োজনের quantity নির্বাচন করে custom order করুন।</p>
+    <div class="follower-select-row">
+      <label>Followers Quantity<select id="followerQuantity"><option value="1K" data-price="৳199">1K</option><option value="2K" data-price="৳349">2K</option><option value="3K" data-price="৳499">3K</option><option value="4K" data-price="৳649">4K</option><option value="5K" data-price="৳799">5K</option><option value="6K" data-price="৳949">6K</option><option value="7K" data-price="৳1,099">7K</option><option value="8K" data-price="৳1,249">8K</option><option value="9K" data-price="৳1,399">9K</option><option value="10K" data-price="৳1,549">10K</option><option value="11K" data-price="৳1,699">11K</option><option value="12K" data-price="৳1,849">12K</option><option value="13K" data-price="৳1,999">13K</option><option value="14K" data-price="৳2,149">14K</option><option value="15K" data-price="৳2,299">15K</option><option value="16K" data-price="৳2,449">16K</option><option value="17K" data-price="৳2,599">17K</option><option value="18K" data-price="৳2,749">18K</option><option value="19K" data-price="৳2,899">19K</option><option value="20K" data-price="৳3,049">20K</option></select></label>
+    </div>
+    <div class="service-price-card follower-card">
+     <span class="price-label">FACEBOOK BD FOLLOWERS</span><h4>Facebook BD Followers</h4><p class="price-subtitle" id="followerSubtitle">1K followers</p>
+     <div class="price-row"><strong id="followerPrice">৳199</strong><span>starting</span></div>
+     <ul class="service-benefits"><li>1K থেকে 20K quantity</li><li>Page Link দেওয়ার সুবিধা</li><li>Quantity অনুযায়ী price</li><li>Custom requirement দেওয়ার option</li><li>Order-এর আগে details confirm</li></ul>
+     <button class="btn btn-primary order-wide" id="followerOrder">অর্ডার করুন →</button>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+<section id="about">
+ <div class="container">
+  <div class="section-head compact-head">
+   <span class="kicker">Why Growlancer Agency</span>
+   <h2>Professional কাজ, সহজ experience.</h2>
+   <p>নতুন customer-ও যেন প্রথমবার website ব্যবহার করেই বুঝতে পারেন কী নিতে হবে, কত লাগবে এবং কীভাবে order করতে হবে।</p>
+  </div>
+  <div class="about-grid">
+   <div class="about-card glass"><span class="about-icon">01</span><div><h3>সহজে নির্বাচন</h3><p>সব service এক জায়গায়। প্রয়োজনীয় service দেখে সরাসরি package বেছে নিন।</p></div></div>
+   <div class="about-card glass"><span class="about-icon">02</span><div><h3>পরিষ্কার package</h3><p>Basic, Premium ও Corporate আলাদা করে সাজানো, যাতে তুলনা করা সহজ হয়।</p></div></div>
+   <div class="about-card glass"><span class="about-icon">03</span><div><h3>সহজ order</h3><p>Service, package, budget ও requirement একবারেই পাঠানোর ব্যবস্থা।</p></div></div>
+   <div class="about-card glass"><span class="about-icon">04</span><div><h3>Demo দেখে সিদ্ধান্ত</h3><p>Demo button থেকে live link বা sample images দেখানো যাবে।</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="demos">
+ <div class="container">
+  <div class="section-head compact-head"><span class="kicker">Demo & Portfolio</span><h2>কাজ আগে দেখুন</h2><p>এখানে real demo link দেওয়া যাবে। চাইলে Demo খুললে একাধিক sample image-ও দেখানো যাবে।</p></div>
+  <div class="demo-grid">
+   <a class="demo glass" href="#" onclick="openDemo('Facebook Page Setup');return false;"><div><span class="demo-type">LIVE / IMAGE</span><h3>Facebook Page Setup</h3><p>Demo দেখুন ↗</p></div></a>
+   <a class="demo glass" href="#" onclick="openDemo('Website Service');return false;"><div><span class="demo-type">LIVE / IMAGE</span><h3>Website Service</h3><p>Demo দেখুন ↗</p></div></a>
+   <a class="demo glass" href="#" onclick="openDemo('Social Media Poster Design');return false;"><div><span class="demo-type">IMAGE GALLERY</span><h3>Social Media Design</h3><p>Samples দেখুন ↗</p></div></a>
+  </div>
+ </div>
+</section>
+
+<section id="counter">
+ <div class="container">
+  <div class="counter-card glass">
+   <span class="kicker">Growing Together</span>
+   <h2>আমাদের সাথে ইতিমধ্যে</h2>
+   <div class="counter-number" id="serviceCount">0+</div>
+   <p>জন উদ্যোক্তা ও business owner service নিয়েছেন</p>
+   <div class="counter-line"><span></span></div>
+   <small>আপনার business journey-তেও Growlancer Agency-এর সাথে শুরু করুন।</small>
+  </div>
+ </div>
+</section>
+
+<section id="running-work">
+ <div class="container">
+  <div class="running-card glass">
+   <span class="kicker">Currently Working</span>
+   <h2>এই মুহূর্তে চলছে</h2>
+   <div class="running-number" id="runningCount">17</div>
+   <p style="color:var(--muted);font-size:13px">টি active service work</p>
+   <small style="color:#70889d;font-size:10px">সংখ্যাটি সময়ের সাথে পরিবর্তিত হতে পারে।</small>
+  </div>
+ </div>
+</section>
+
+<section id="reviews">
+ <div class="container">
+  <div class="section-head compact-head"><span class="kicker">Client Reviews</span><h2>কাজের অভিজ্ঞতা কেমন?</h2><p>আমাদের clients-এর feedback এখানে একের পর এক slide হয়ে দেখাবে।</p></div>
+  <div class="reviews-wrap">
+   <div class="reviews-track" id="reviewsTrack" aria-label="Client reviews"></div>
+   <div class="review-controls">
+    <button type="button" class="review-arrow" id="reviewPrev" aria-label="Previous review">‹</button>
+    <div class="review-dots" id="reviewDots"></div>
+    <button type="button" class="review-arrow" id="reviewNext" aria-label="Next review">›</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="container">
+  <div class="final-cta glass">
+   <span class="kicker">Ready to grow?</span><h2>আপনার Business-এর জন্য শুরু করি?</h2>
+   <p style="color:var(--muted);margin:8px auto 0;max-width:600px">Service ও package বেছে নিন, অথবা সরাসরি আমাদের সাথে কথা বলুন।</p>
+   <div class="cta" style="justify-content:center;margin-top:20px"><button class="btn btn-primary" onclick="openOrder('General','Custom','Requirement অনুযায়ী')">অর্ডার করুন</button><a class="btn btn-secondary" href="#" onclick="alert('এখানে আপনার Messenger link বসবে');return false;">Messenger</a></div>
+   <div class="socials" id="contactSocials"></div>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <div class="container footer-row"><div>© 2026 Growlancer Agency. All rights reserved.</div><div>Professional digital services, made simple.</div></div>
+</footer>
+
+<div id="searchBox" class="search-box" onclick="closeSearch(event)">
+ <div class="search-inner glass" onclick="event.stopPropagation()"><input id="searchInput" placeholder="Service খুঁজুন..." oninput="searchServices(this.value)" autofocus><div id="searchResult" style="margin-top:18px;color:#a8b7c9"></div></div>
+</div>
+
+
+<div id="orderModal" class="order-modal" onclick="closeOrder(event)">
+ <div class="modal-card glass" onclick="event.stopPropagation()">
+  <button class="icon-btn close" onclick="closeOrder()">×</button>
+  <span class="kicker">Order Request</span>
+  <h2 style="margin-top:6px">আপনার order details</h2>
+  <p class="modal-help">নিচের তথ্যগুলো দিলে আমরা আপনার requirement বুঝে দ্রুত যোগাযোগ করতে পারব।</p>
+
+  <div class="selected-summary">
+   <div><span>Service</span><strong id="selectedServiceLabel">General</strong></div>
+   <div><span>Package</span><strong id="selectedPackageLabel">Custom</strong></div>
+   <div><span>Price</span><strong id="selectedPriceLabel">Requirement অনুযায়ী</strong></div>
+  </div>
+
+  <form class="form-grid" onsubmit="submitOrder(event)">
+   <label>কোন service লাগবে?
+    <select id="orderServiceSelect" class="order-service-select" name="serviceSelect" onchange="changeOrderService(this.value)" required>
+     <option value="">Service নির্বাচন করুন</option><option>Facebook Page Setup</option><option>Website Service</option><option>Social Media Poster Design</option><option>Facebook BD Followers</option>
+    </select>
+   </label>
+   <label id="orderPackageWrap">কোন package লাগবে?
+    <select id="orderPackageSelect" class="order-service-select" onchange="changeOrderPackage(this.value)">
+     <option value="">আগে service নির্বাচন করুন</option>
+    </select>
+   </label>
+   <input id="selectedService" name="service" type="hidden">
+   <input id="selectedPackage" name="package" type="hidden">
+   <input id="selectedPrice" name="price" type="hidden">
+
+   <label>আপনার নাম <input name="name" required placeholder="আপনার নাম"></label>
+   <label>WhatsApp / ফোন নম্বর <input name="phone" required inputmode="tel" placeholder="01XXXXXXXXX"></label>
+   <label>Facebook Page / Website Link <input name="link" placeholder="https://..."></label>
+
+   <div class="two-fields">
+    <label>আপনার budget <input id="orderBudget" name="budget" placeholder="Package price অনুযায়ী auto-fill হবে"></label>
+    <label>কখন দরকার? <select name="deadline"><option value="">Select করুন</option><option>যত দ্রুত সম্ভব</option><option>১-২ দিনের মধ্যে</option><option>৩-৫ দিনের মধ্যে</option><option>Flexible</option></select></label>
+   </div>
+
+   <label id="quantityWrap" style="display:none">Quantity / প্রয়োজনীয় সংখ্যা <input id="orderQuantity" name="quantity" placeholder="প্রয়োজনীয় সংখ্যা"></label>
+   <label>আপনার requirement <textarea name="requirements" placeholder="আপনি কী ধরনের কাজ চান, কী কী দরকার, বা কোনো বিশেষ instruction থাকলে লিখুন..."></textarea></label>
+   <label class="check-row"><input type="checkbox" required> <span>আমার দেওয়া তথ্য সঠিক এবং Growlancer Agency আমার সাথে যোগাযোগ করতে পারবে।</span></label>
+
+   <button class="btn btn-primary full" type="submit">Order Request পাঠান →</button>
+   <small class="form-note">Final price ও delivery requirement যাচাই করে confirm করা হবে।</small>
+  </form>
+  <div id="orderConfirmation" class="order-confirmation" style="display:none">
+   <div class="confirm-badge">✓</div>
+   <h3>Send Money করুন</h3>
+   <p class="sendmoney-lead">নিচের তথ্য দেখে সহজে Send Money করুন। প্রথমে একটি মাধ্যম নির্বাচন করুন।</p>
+
+   <div class="sendmoney-simple-card">
+    <div class="sendmoney-simple-top">
+     <div>
+      <span class="simple-label">মোট মূল্য</span>
+      <strong id="confirmTotalAmount">৳0</strong>
+      <div class="payable-line"><span>এখন Send Money করতে হবে</span><strong id="confirmAmount">৳0</strong></div>
+     </div>
+     <div class="simple-status">Secure</div>
+    </div>
+
+    <div id="sendMoneyPlanWrap" class="sendmoney-choice">
+     <label><input type="radio" name="sendPlan" value="advance" checked> <span>50% Advance</span></label>
+     <label><input type="radio" name="sendPlan" value="full"> <span>100% Full</span></label>
+    </div>
+    <div id="followerFullNote" class="order-service-note" style="display:none">Followers service-এর জন্য 100% Full Send Money প্রযোজ্য।</div>
+
+    <div class="sendmoney-method-picker">
+     <span>Send Money মাধ্যম</span>
+     <div class="sendmoney-method-tabs" role="radiogroup" aria-label="Send Money মাধ্যম">
+      <label><input type="radio" name="sendMethod" value="bKash" checked onchange="switchSendMoneyMethod(this.value)"><span>bKash</span></label>
+      <label><input type="radio" name="sendMethod" value="Nagad" onchange="switchSendMoneyMethod(this.value)"><span>Nagad</span></label>
+      <label><input type="radio" name="sendMethod" value="Rocket" onchange="switchSendMoneyMethod(this.value)"><span>Rocket</span></label>
+     </div>
+    </div>
+
+    <div class="sendmoney-methods">
+     <div class="sendmoney-box" data-method="bKash">
+      <span class="sendmoney-logo" id="bkashLogo">bK</span>
+      <div class="account-details"><small>bKash • Send Money</small><strong>01400101005</strong></div>
+      <button type="button" class="sendmoney-copy" onclick="copySendNumber('01400101005','bKash')" aria-label="Copy bKash number">Copy</button>
+     </div>
+     <div class="sendmoney-box" data-method="Nagad" style="display:none">
+      <span class="sendmoney-logo" id="nagadLogo">N</span>
+      <div class="account-details"><small>Nagad • Send Money</small><strong>01400101005</strong></div>
+      <button type="button" class="sendmoney-copy" onclick="copySendNumber('01400101005','Nagad')" aria-label="Copy Nagad number">Copy</button>
+     </div>
+     <div class="sendmoney-box" data-method="Rocket" style="display:none">
+      <span class="sendmoney-logo" id="rocketLogo">R</span>
+      <div class="account-details"><small>Rocket • Send Money</small><strong>01400101005</strong></div>
+      <button type="button" class="sendmoney-copy" onclick="copySendNumber('01400101005','Rocket')" aria-label="Copy Rocket number">Copy</button>
+     </div>
+    </div>
+
+    <div class="sendmoney-howto">
+     <div><b>১</b><span>উপরের নম্বরে <strong>Send Money</strong> করুন</span></div>
+     <div><b>২</b><span>যে নম্বর থেকে টাকা দিয়েছেন সেটি নিচে দিন</span></div>
+     <div><b>৩</b><span>TxnID দিয়ে অর্ডার কনফার্ম করুন</span></div>
+    </div>
+
+    <div class="sender-grid">
+     <label>যে নম্বর থেকে Send Money করেছেন<input id="senderNumber" inputmode="tel" placeholder="01XXXXXXXXX" required></label>
+     <label>Transaction ID<input id="transactionId" placeholder="TxnID লিখুন" required></label>
+    </div>
+   </div>
+
+   <div class="confirm-actions"><button class="btn btn-primary" onclick="confirmOrder()">অর্ডার কনফার্ম করুন →</button><button class="btn btn-secondary" onclick="backToOrderForm()">← তথ্য পরিবর্তন</button></div>
+  </div>
+ </div>
+</div>
+
+<script>
+const orderState={service:'General',package:'Custom',price:'Requirement অনুযায়ী'};
+const contactLinks={facebook:'',whatsapp:'',instagram:'',email:''};
+
+function toggleMenu(){
+  const x=document.getElementById('menuPanel');
+  if(!x)return;
+  x.style.display=x.style.display==='block'?'none':'block';
+}
+
+function closeSearchInline(){
+  const box=document.getElementById('inlineSearch');
+  if(box)box.remove();
+}
+
+function closeSearch(e){
+  if(!e || e.target===document.getElementById('searchBox')){
+    const box=document.getElementById('searchBox');
+    if(box)box.style.display='none';
+  }
+}
+
+function openSearch(){
+  let box=document.getElementById('inlineSearch');
+  if(box){const input=box.querySelector('input');if(input){input.focus();input.select();}return;}
+  box=document.createElement('div');
+  box.id='inlineSearch';
+  box.className='inline-search glass';
+  box.innerHTML='<input id="serviceSearchInput" placeholder="Service খুঁজুন..." aria-label="Search services"><div id="searchResult"><p>Service লিখে খুঁজুন</p></div>';
+  const header=document.querySelector('header');
+  if(header)header.after(box);
+  const input=box.querySelector('input');
+  input.addEventListener('input',()=>searchServices(input.value));
+  setTimeout(()=>input.focus(),40);
+}
+
+function searchServices(v){
+  const r=document.getElementById('searchResult');
+  if(!r)return;
+  const q=String(v||'').toLowerCase().trim();
+  const items=[
+    ['Facebook Page Setup','#service-page'],
+    ['Website Service','#service-website'],
+    ['Social Media Poster Design','#service-design'],
+    ['Facebook BD Followers','#service-followers']
+  ];
+  const found=items.filter(x=>x[0].toLowerCase().includes(q));
+  if(!q){r.innerHTML='<p>Service লিখে খুঁজুন</p>';return;}
+  if(!found.length){r.innerHTML='<p>কোনো service পাওয়া যায়নি।</p>';return;}
+  r.innerHTML=found.map(x=>`<button type="button" data-target="${x[1]}">${x[0]} <span>↓</span></button>`).join('');
+  r.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>goSearchResult(btn.dataset.target)));
+}
+
+function goSearchResult(id){
+  closeSearchInline();
+  const target=document.querySelector(id);
+  if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+const servicePackages={
+ 'Facebook Page Setup':[
+  {pkg:'Basic',price:'৳750',sub:'নতুন business / উদ্যোক্তার জন্য'},
+  {pkg:'Premium',price:'৳1,200',sub:'Growing business-এর জন্য'},
+  {pkg:'Corporate',price:'৳2,000',sub:'Brand / organization-এর জন্য'}
+ ],
+ 'Website Service':[
+  {pkg:'Basic',price:'৳2,500',sub:'Simple business website-এর জন্য'},
+  {pkg:'Premium',price:'৳5,000',sub:'Growing business-এর জন্য'},
+  {pkg:'Corporate',price:'Custom',sub:'Advanced business website-এর জন্য'}
+ ],
+ 'Social Media Poster Design':[
+  {pkg:'Single Design',price:'৳250',sub:'একটি professional social media design'},
+  {pkg:'Monthly Basic',price:'৳2,000',sub:'Monthly content-এর জন্য'},
+  {pkg:'Monthly Premium',price:'৳3,500',sub:'Regular brand content-এর জন্য'}
+ ],
+ 'Facebook BD Followers':[]
+};
+function getServiceDefaults(service){
+ const list=servicePackages[service]||[];
+ return list[0]||{pkg:'Custom',price:'Requirement অনুযায়ী'};
+}
+function populateOrderPackages(service,selectedPkg=''){
+ const wrap=document.getElementById('orderPackageWrap'), sel=document.getElementById('orderPackageSelect');
+ if(!wrap||!sel)return;
+ if(service==='Facebook BD Followers'){
+   wrap.style.display='none'; sel.innerHTML=''; return;
+ }
+ const list=servicePackages[service]||[];
+ wrap.style.display=list.length?'block':'none';
+ sel.innerHTML=list.map(x=>`<option value="${x.pkg}" data-price="${x.price}">${x.pkg} • ${x.price}</option>`).join('');
+ if(selectedPkg && list.some(x=>x.pkg===selectedPkg)) sel.value=selectedPkg;
+ else if(list.length) sel.value=list[0].pkg;
+}
+function updateOrderFields(service,pkg,price,extraQty=''){
+ const qty=document.getElementById('quantityWrap'); const qinput=document.getElementById('orderQuantity'); const budget=document.getElementById('orderBudget');
+ if(!qty||!qinput||!budget)return;
+ const needsQty=(service==='Facebook BD Followers'||service==='Social Media Poster Design');
+ qty.style.display=needsQty?'block':'none'; qinput.required=false; qinput.value=extraQty||'';
+ if(price && price!=='Custom' && price!=='Requirement অনুযায়ী'){budget.value=price;budget.readOnly=true;}else{budget.value='';budget.readOnly=false;}
+ budget.placeholder=price==='Custom'?'আপনার বাজেট লিখুন':'Package price অনুযায়ী auto-fill হবে';
+ qinput.placeholder=service==='Facebook BD Followers'?'1K / 2K / 3K ... 20K':'যেমন: 5টি design';
+}
+function setOrderService(service,pkg,price,extraQty=''){
+ orderState.service=service;orderState.package=pkg;orderState.price=price;
+ document.getElementById('selectedService').value=service; document.getElementById('selectedPackage').value=pkg; document.getElementById('selectedPrice').value=price;
+ document.getElementById('selectedServiceLabel').textContent=service; document.getElementById('selectedPackageLabel').textContent=pkg; document.getElementById('selectedPriceLabel').textContent=price;
+ const select=document.getElementById('orderServiceSelect'); if(select)select.value=service==='General'?'':service;
+ populateOrderPackages(service,pkg);
+ updateOrderFields(service,pkg,price,extraQty);
+}
+function changeOrderService(service){
+ if(!service)return;
+ if(service==='Facebook BD Followers'){
+   const sel=document.getElementById('followerQuantity');
+   const opt=sel?.options[sel.selectedIndex];
+   setOrderService(service,'Custom',opt?.dataset.price||'৳199',opt?.value||'1K');
+ }else{
+   const d=getServiceDefaults(service);
+   setOrderService(service,d.pkg,d.price);
+ }
+}
+function changeOrderPackage(pkg){
+ const service=document.getElementById('orderServiceSelect')?.value||'';
+ const item=(servicePackages[service]||[]).find(x=>x.pkg===pkg);
+ if(!service||!item)return;
+ setOrderService(service,item.pkg,item.price);
+}
+
+function openOrder(service='General',pkg='Custom',price='Requirement অনুযায়ী',extraQty=''){
+ const modal=document.getElementById('orderModal'); const form=document.querySelector('#orderModal form'); if(!modal||!form)return;
+ if(service==='General'){service='';pkg='Custom';price='Requirement অনুযায়ী';}
+ orderState.service=service||'General';orderState.package=pkg;orderState.price=price;
+ document.getElementById('selectedService').value=service; document.getElementById('selectedPackage').value=pkg; document.getElementById('selectedPrice').value=price;
+ document.getElementById('selectedServiceLabel').textContent=service||'Service নির্বাচন করুন'; document.getElementById('selectedPackageLabel').textContent=service?pkg:'--'; document.getElementById('selectedPriceLabel').textContent=service?price:'--';
+ const select=document.getElementById('orderServiceSelect'); if(select)select.value=service;
+ populateOrderPackages(service,pkg);
+ document.getElementById('orderConfirmation').style.display='none'; form.style.display='grid'; updateOrderFields(service,pkg,price,extraQty);
+ modal.style.display='block'; document.body.style.overflow='hidden';
+}
+
+function closeOrder(e){
+  const modal=document.getElementById('orderModal');
+  if(!modal)return;
+  if(!e || e.target===modal){modal.style.display='none';document.body.style.overflow='';}
+}
+
+function openDemo(service){
+  const demos={
+    'Facebook Page Setup':'Facebook Page Setup-এর real demo link এখানে বসানো যাবে।',
+    'Website Service':'Website Service-এর live demo link এখানে বসানো যাবে।',
+    'Social Media Poster Design':'Poster sample gallery এখানে যুক্ত করা যাবে।',
+    'Facebook BD Followers':'Facebook BD Followers service details এখানে যুক্ত করা যাবে।'
+  };
+  alert(service+'\n\n'+(demos[service]||'Demo information এখানে যুক্ত হবে।'));
+}
+
+function submitOrder(e){
+ e.preventDefault(); const form=e.target; const f=new FormData(form);
+ const service=String(document.getElementById('selectedService')?.value||f.get('service')||'').trim();
+ if(!service){alert('একটি service নির্বাচন করুন।');return;}
+ const pkg=String(document.getElementById('selectedPackage')?.value||f.get('package')||'Custom');
+ let raw=String(f.get('price')||''); let amount=parseInt(raw.replace(/[^0-9]/g,''),10)||0;
+ if(service==='Facebook BD Followers'){const sel=document.getElementById('followerQuantity');const opt=sel?.options[sel.selectedIndex];if(opt){form.querySelector('[name="quantity"]').value=opt.value;amount=parseInt(String(opt.dataset.price||'').replace(/[^0-9]/g,''),10)||amount;}}
+ window.currentOrderForm={text:`Growlancer Agency Order Request\n\nService: ${service}\nPackage: ${pkg}\nPrice shown: ${raw}\nName: ${f.get('name')}\nPhone/WhatsApp: ${f.get('phone')}\nPage/Website: ${f.get('link')||'N/A'}\nBudget: ${f.get('budget')||'N/A'}\nDeadline: ${f.get('deadline')||'N/A'}\nQuantity: ${f.get('quantity')||'N/A'}\nRequirements: ${f.get('requirements')||'N/A'}`,amount,service,pkg,price:raw};
+ const totalEl=document.getElementById('confirmTotalAmount');
+ const payableEl=document.getElementById('confirmAmount');
+ const planWrap=document.getElementById('sendMoneyPlanWrap'); const followerNote=document.getElementById('followerFullNote');
+ const updateSendMoneyAmount=()=>{
+   const selected=document.querySelector('input[name="sendPlan"]:checked')?.value||'advance';
+   const payable=amount?(service==='Facebook BD Followers'||selected==='full'?amount:Math.ceil(amount/2)):0;
+   if(totalEl)totalEl.textContent=amount?'৳'+amount.toLocaleString():'Final amount after confirmation';
+   if(payableEl)payableEl.textContent=payable?'৳'+payable.toLocaleString():'Final amount after confirmation';
+ };
+ if(service==='Facebook BD Followers'){
+   planWrap.style.display='none';followerNote.style.display='block';
+ }else{
+   planWrap.style.display='grid';followerNote.style.display='none';
+   const advance=document.querySelector('input[name="sendPlan"][value="advance"]'); if(advance)advance.checked=true;
+   document.querySelectorAll('input[name="sendPlan"]').forEach(r=>{r.onchange=updateSendMoneyAmount;});
+ }
+ updateSendMoneyAmount();
+ document.getElementById('senderNumber').value=''; document.getElementById('transactionId').value='';
+ switchSendMoneyMethod('bKash');
+ form.style.display='none'; document.getElementById('orderConfirmation').style.display='block';
+}
+
+function backToOrderForm(){
+  const confirmation=document.getElementById('orderConfirmation');
+  const form=document.querySelector('#orderModal form');
+  if(confirmation)confirmation.style.display='none';
+  if(form)form.style.display='grid';
+}
+
+function copySendNumber(number,name){
+ if(navigator.clipboard){navigator.clipboard.writeText(number).then(()=>alert(name+' নম্বর কপি হয়েছে।')).catch(()=>alert('নম্বর: '+number));}else{alert('নম্বর: '+number);}
+}
+function confirmOrder(){
+ const o=window.currentOrderForm||{}; const service=o.service||'';
+ if(!service){alert('Service নির্বাচন করুন।');return;}
+ const sender=document.getElementById('senderNumber')?.value.trim()||''; const tx=document.getElementById('transactionId')?.value.trim()||'';
+ if(!sender){alert('যে নম্বর থেকে Send Money করেছেন সেটি দিন।');return;}
+ if(!tx){alert('TxnID দিন।');return;}
+ let plan='full'; if(service!=='Facebook BD Followers')plan=document.querySelector('input[name="sendPlan"]:checked')?.value||'advance';
+ const base=o.amount||0; const sendAmount=base?Math.ceil(base*(plan==='full'?1:.5)):null; const amountText=sendAmount?'৳'+sendAmount.toLocaleString():'Final amount after confirmation'; const method=document.querySelector('input[name="sendMethod"]:checked')?.value||'bKash';
+ const msg=(o.text||'Growlancer Agency Order Request')+`\n\nSend Money Method: ${method}\nSend Money: ${plan==='full'?'Full (100%)':'Advance (50%)'}\nSend Money Amount: ${amountText}\nSender Number: ${sender}\nTxnID: ${tx}\nSend Money Number: 01400101005`;
+ if(navigator.clipboard)navigator.clipboard.writeText(msg).catch(()=>{});
+ alert('অর্ডার কনফার্ম করার তথ্য প্রস্তুত হয়েছে।\n\nSend Money Amount: '+amountText+'\nTxnID: '+tx+'\n\nOrder details clipboard-এ copy করা হয়েছে।');
+}
+
+function switchServicePackage(btn){
+  const tabs=btn.closest('.service-package-tabs');
+  const card=btn.closest('.service-page');
+  if(!tabs||!card)return;
+  tabs.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const box=card.querySelector('.service-price-card');
+  if(!box)return;
+  const pkg=btn.dataset.pkg||'';
+  const price=btn.dataset.price||'Custom';
+  const subtitle=btn.dataset.sub||'';
+  box.querySelector('.price-label').textContent=pkg.toUpperCase();
+  box.querySelector('.price-subtitle').textContent=subtitle;
+  box.querySelector('.price-row strong').textContent=price;
+  const key=tabs.dataset.packageKey||'';
+  let suffix='starting';
+  if(key==='design')suffix=pkg==='Single Design'?'per design':'per month';
+  if(price==='Custom')suffix='requirement based';
+  box.querySelector('.price-row span').textContent=suffix;
+  const orderBtn=box.querySelector('.order-wide');
+  if(orderBtn)orderBtn.onclick=()=>openOrder(card.dataset.service,pkg,price);
+}
+
+function setupPackageControls(){
+  document.querySelectorAll('.service-package-tabs').forEach(tabs=>{
+    const buttons=[...tabs.querySelectorAll('button')];
+    buttons.forEach(btn=>btn.addEventListener('click',()=>switchServicePackage(btn)));
+
+    let startX=0,startY=0,lastX=0,tracking=false;
+    const begin=(x,y)=>{startX=x;startY=y;lastX=x;tracking=true;};
+    const move=(x,y,e)=>{
+      if(!tracking)return;
+      lastX=x;
+      const dx=x-startX,dy=y-startY;
+      if(Math.abs(dx)>12 && Math.abs(dx)>Math.abs(dy) && e && e.cancelable)e.preventDefault();
+    };
+    const finish=(x,y)=>{
+      if(!tracking)return;
+      tracking=false;
+      const dx=x-startX,dy=y-startY;
+      if(Math.abs(dx)<35 || Math.abs(dx)<=Math.abs(dy))return;
+      const active=tabs.querySelector('button.active')||buttons[0];
+      const i=buttons.indexOf(active);
+      const n=Math.max(0,Math.min(buttons.length-1,i+(dx<0?1:-1)));
+      if(n!==i)buttons[n].click();
+    };
+
+    tabs.addEventListener('touchstart',e=>begin(e.touches[0].clientX,e.touches[0].clientY),{passive:true});
+    tabs.addEventListener('touchmove',e=>move(e.touches[0].clientX,e.touches[0].clientY,e),{passive:false});
+    tabs.addEventListener('touchend',e=>finish(e.changedTouches[0].clientX,e.changedTouches[0].clientY),{passive:true});
+    tabs.addEventListener('touchcancel',()=>tracking=false,{passive:true});
+
+    tabs.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')begin(e.clientX,e.clientY);},{passive:true});
+    tabs.addEventListener('pointermove',e=>{if(e.pointerType==='mouse')move(e.clientX,e.clientY,e);},{passive:false});
+    tabs.addEventListener('pointerup',e=>{if(e.pointerType==='mouse')finish(e.clientX,e.clientY);},{passive:true});
+
+    const active=tabs.querySelector('button.active')||buttons[0];
+    if(active)switchServicePackage(active);
+  });
+}
+
+function setupFollower(){
+  const select=document.getElementById('followerQuantity');
+  const price=document.getElementById('followerPrice');
+  const subtitle=document.getElementById('followerSubtitle');
+  const order=document.getElementById('followerOrder');
+  if(!select||!price||!subtitle||!order)return;
+  const update=()=>{
+    const opt=select.options[select.selectedIndex];
+    const p=opt.dataset.price||'৳199';
+    subtitle.textContent=opt.value+' followers';
+    price.textContent=p;
+    order.onclick=()=>openOrder('Facebook BD Followers','Custom',p,opt.value);
+  };
+  select.addEventListener('change',update);
+  update();
+}
+
+function renderContactLinks(){
+  const wrap=document.getElementById('contactSocials');
+  if(!wrap)return;
+  const items=[['facebook','f','Facebook'],['whatsapp','W','WhatsApp'],['instagram','◎','Instagram'],['email','@','Email']];
+  wrap.innerHTML=items.filter(x=>contactLinks[x[0]]).map(x=>`<a class="social" href="${contactLinks[x[0]]}" target="_blank" rel="noopener" aria-label="${x[2]}">${x[1]}</a>`).join('');
+}
+
+function animateCustomerCount(){
+  const el=document.getElementById('serviceCount');
+  if(!el||el.dataset.animated==='1')return;
+  el.dataset.animated='1';
+  const target=950,duration=1500,start=performance.now();
+  function tick(now){
+    const p=Math.min((now-start)/duration,1);
+    const eased=1-Math.pow(1-p,3);
+    el.textContent=Math.floor(target*eased).toLocaleString()+'+';
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function initCustomerCounter(){
+  const el=document.getElementById('serviceCount');
+  if(!el)return;
+  if('IntersectionObserver' in window){
+    const obs=new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting){animateCustomerCount();obs.disconnect();}
+    },{threshold:.25});
+    obs.observe(el);
+  }else animateCustomerCount();
+}
+
+function initRunningCount(){
+ const el=document.getElementById('runningCount'); if(!el)return;
+ const update=()=>{const n=Math.floor(Math.random()*21)+10;el.animate([{transform:'scale(.9)',opacity:.45},{transform:'scale(1)',opacity:1}],{duration:350,easing:'ease-out'});el.textContent=n;};
+ update(); setInterval(update,7000);
+}
+/* =========================
+   EDIT REVIEWS HERE
+   Add/change up to 6 reviews.
+   profile: put your image path here, e.g. assets/reviews/client-1.jpg
+   ========================= */
+const reviewConfig=[
+ {name:'Client Name 01',role:'Business Owner',profile:'',text:'Page setup থেকে order পর্যন্ত পুরো process-টা খুব সহজ ছিল। কাজটাও clean ও professional হয়েছে।'},
+ {name:'Client Name 02',role:'Entrepreneur',profile:'',text:'Package আগে থেকেই পরিষ্কার ছিল, তাই নিজের প্রয়োজন অনুযায়ী option বেছে নিতে পেরেছি।'},
+ {name:'Client Name 03',role:'Business Owner',profile:'',text:'Design service নেওয়ার সময় requirement দেওয়ার ব্যবস্থা এবং communication খুব convenient লেগেছে।'},
+ {name:'Client Name 04',role:'Online Business Owner',profile:'',text:'কাজের presentation, communication এবং delivery process সবকিছুই বেশ organised লেগেছে।'},
+ {name:'Client Name 05',role:'Entrepreneur',profile:'',text:'নিজের business-এর প্রয়োজন অনুযায়ী service নেওয়া সহজ হয়েছে এবং পুরো experience ভালো ছিল।'},
+ {name:'Client Name 06',role:'Business Owner',profile:'',text:'Professional support এবং পরিষ্কার package information থাকার কারণে সিদ্ধান্ত নিতে সুবিধা হয়েছে।'}
+];
+function renderReviews(){
+ const track=document.getElementById('reviewsTrack'), dots=document.getElementById('reviewDots');
+ if(!track||!dots)return;
+ track.innerHTML=reviewConfig.slice(0,6).map((r,idx)=>`
+  <article class="review-card glass" data-review-index="${idx}">
+   <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+   <p class="review-text">“${r.text}”</p>
+   <div class="review-user">
+    <span class="review-avatar ${r.profile?'':'is-empty'}">${r.profile?`<img src="${r.profile}" alt="${r.name}" onerror="this.remove();this.parentElement.classList.add('is-empty')">`:''}</span>
+    <div><strong>${r.name}</strong><span>${r.role}</span></div>
+   </div>
+  </article>`).join('');
+ dots.innerHTML=reviewConfig.slice(0,6).map((_,i)=>`<button type="button" aria-label="Review ${i+1}" data-review="${i}"></button>`).join('');
+ const cards=[...track.children]; let current=0;
+ const go=n=>{
+   if(!cards.length)return;
+   current=(n+cards.length)%cards.length;
+   track.scrollTo({left:cards[current].offsetLeft,behavior:'smooth'});
+   dots.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('active',i===current));
+ };
+ dots.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.review))));
+ document.getElementById('reviewPrev')?.addEventListener('click',()=>go(current-1));
+ document.getElementById('reviewNext')?.addEventListener('click',()=>go(current+1));
+ let timer=setInterval(()=>go(current+1),4500);
+ track.addEventListener('touchstart',()=>clearInterval(timer),{passive:true});
+ track.addEventListener('touchend',()=>{clearInterval(timer);timer=setInterval(()=>go(current+1),4500)},{passive:true});
+ track.addEventListener('scroll',()=>{
+   const left=track.scrollLeft;
+   let best=0,bestDiff=Infinity;
+   cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-left);if(d<bestDiff){bestDiff=d;best=i;}});
+   current=best;
+   dots.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('active',i===current));
+ });
+ go(0);
+}
+function switchSendMoneyMethod(method){
+ document.querySelectorAll('.sendmoney-box').forEach(box=>{
+   box.style.display=box.dataset.method===method?'grid':'none';
+ });
+ document.querySelectorAll('input[name="sendMethod"]').forEach(r=>r.checked=r.value===method);
+}
+function initSendMoneyLogos(){
+ const sendMoneyLogos={bKash:'',Nagad:'',Rocket:''};
+ [['bKash','bkashLogo'],['Nagad','nagadLogo'],['Rocket','rocketLogo']].forEach(([key,id])=>{
+   const el=document.getElementById(id),src=sendMoneyLogos[key];
+   if(el&&src)el.innerHTML=`<img src="${src}" alt="${key} logo">`;
+ });
+ switchSendMoneyMethod('bKash');
+}
+
+function init(){
+  setupPackageControls();
+  setupFollower();
+  renderContactLinks();
+  initCustomerCounter();
+  initRunningCount();
+  renderReviews();
+  initSendMoneyLogos();
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeSearchInline();closeOrder();}
+});
+
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
