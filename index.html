@@ -549,6 +549,25 @@ body{overflow-x:hidden}
 @media(max-width:600px){.payable-line{max-width:100%}.payable-line strong{font-size:17px!important}}
 </style>
 
+<style id="order-success-popup">
+.order-success-popup{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:20px;background:rgba(2,10,18,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);animation:successFadeIn .22s ease}
+.order-success-card{width:min(420px,92vw);padding:28px 22px 22px;border:1px solid rgba(73,189,248,.28);border-radius:26px;background:linear-gradient(145deg,rgba(21,39,53,.98),rgba(8,23,36,.98));box-shadow:0 25px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);text-align:center;animation:successPop .28s cubic-bezier(.2,.8,.2,1)}
+.success-check{width:72px;height:72px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:rgba(12,146,255,.12);border:1px solid rgba(73,189,248,.38);box-shadow:0 0 0 8px rgba(12,146,255,.035)}
+.success-check span{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#0C92FF,#0879f0);color:#fff;font-size:28px;font-weight:900;box-shadow:0 10px 30px rgba(12,146,255,.28)}
+.success-kicker{font-size:9px;font-weight:900;letter-spacing:2px;color:#62caff}
+.order-success-card h3{font-size:22px;line-height:1.35;margin:7px 0 8px;color:#fff}
+.order-success-card>p{margin:0 auto;color:#a9bdcd;font-size:12px;line-height:1.7;max-width:330px}
+.success-order-info{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0 10px}
+.success-order-info div{padding:12px 9px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.success-order-info span{display:block;color:#7f98aa;font-size:9px;margin-bottom:4px}
+.success-order-info strong{display:block;color:#fff;font-size:13px;word-break:break-word}
+.success-note{padding:10px 12px;border-radius:12px;background:rgba(12,146,255,.07);border:1px solid rgba(12,146,255,.14);color:#9edcff;font-size:10px;margin-bottom:13px}
+.success-close-btn{width:100%;min-height:48px}
+@keyframes successFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes successPop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:600px){.order-success-card{padding:25px 17px 18px}.success-check{width:66px;height:66px}.success-check span{width:46px;height:46px;font-size:25px}.order-success-card h3{font-size:20px}.success-order-info strong{font-size:12px}}
+</style>
+
 <style id="final-order-input-fix">
 #senderNumber,#transactionId{color:#fff !important;caret-color:#fff !important;}
 #senderNumber::placeholder,#transactionId::placeholder{color:#9fb0c4 !important;opacity:1;}
@@ -869,6 +888,21 @@ body{overflow-x:hidden}
  </div>
 </div>
 
+<div id="orderSuccessPopup" class="order-success-popup" style="display:none" aria-hidden="true">
+ <div class="order-success-card" role="dialog" aria-modal="true" aria-labelledby="orderSuccessTitle">
+  <div class="success-check"><span>✓</span></div>
+  <span class="success-kicker">ORDER RECEIVED</span>
+  <h3 id="orderSuccessTitle">অর্ডার সফলভাবে পাঠানো হয়েছে! 🎉</h3>
+  <p>আপনার অর্ডারের তথ্য আমরা পেয়েছি। খুব শিগগিরই আপনার সাথে যোগাযোগ করা হবে।</p>
+  <div class="success-order-info">
+   <div><span>Order ID</span><strong id="successOrderId">—</strong></div>
+   <div><span>Send Money</span><strong id="successSendAmount">—</strong></div>
+  </div>
+  <div class="success-note">✓ অর্ডারটি আমাদের সিস্টেমে জমা হয়েছে</div>
+  <button type="button" class="btn btn-primary success-close-btn" onclick="closeOrderSuccess()">ঠিক আছে, ধন্যবাদ →</button>
+ </div>
+</div>
+
 <script>
 const ORDER_CONFIG = {
   // Google Apps Script Web App URL বসানোর জায়গা।
@@ -1018,8 +1052,34 @@ function openOrder(service='General',pkg='Custom',price='Requirement অনু�
 
 function closeOrder(e){
   const modal=document.getElementById('orderModal');
+  const success=document.getElementById('orderSuccessPopup');
   if(!modal)return;
-  if(!e || e.target===modal){modal.style.display='none';document.body.style.overflow='';}
+  if(!e || e.target===modal){
+    modal.style.display='none';
+    if(success){success.style.display='none';success.setAttribute('aria-hidden','true');}
+    document.body.style.overflow='';
+  }
+}
+
+function showOrderSuccess(orderId,amountText){
+  const popup=document.getElementById('orderSuccessPopup');
+  const idEl=document.getElementById('successOrderId');
+  const amountEl=document.getElementById('successSendAmount');
+  if(idEl)idEl.textContent=orderId||'—';
+  if(amountEl)amountEl.textContent=amountText||'—';
+  if(popup){
+    popup.style.display='grid';
+    popup.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+}
+
+function closeOrderSuccess(){
+  const popup=document.getElementById('orderSuccessPopup');
+  const modal=document.getElementById('orderModal');
+  if(popup){popup.style.display='none';popup.setAttribute('aria-hidden','true');}
+  if(modal)modal.style.display='none';
+  document.body.style.overflow='';
 }
 
 function openDemo(service){
@@ -1115,7 +1175,7 @@ function confirmOrder(){
  if(btn){btn.disabled=true;btn.textContent='অর্ডার পাঠানো হচ্ছে…';}
  fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
    .then(()=>{
-     alert('অর্ডার সফলভাবে পাঠানো হয়েছে।\n\nOrder ID: '+orderId+'\nSend Money Amount: '+amountText+'\n\nআপনার order details clipboard-এ copy করা হয়েছে।');
+     showOrderSuccess(orderId,amountText);
      if(btn){btn.disabled=false;btn.textContent='অর্ডার কনফার্ম করুন →';}
    })
    .catch(()=>{
