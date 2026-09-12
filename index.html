@@ -397,6 +397,9 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .reviews-wrap{position:relative;overflow:hidden}.reviews-track{display:flex;gap:14px;overflow:hidden}.review-card{flex:0 0 min(360px,86vw);padding:20px;border-radius:21px}.review-stars{color:#61c8ff;letter-spacing:2px;font-size:13px}.review-text{color:#c6d5e3;font-size:13px;line-height:1.75;margin:10px 0 15px}.review-user{display:flex;align-items:center;gap:10px}.review-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--cyan));font-weight:900}.review-user strong{display:block;font-size:12px}.review-user span{display:block;color:#7f96a9;font-size:10px}.review-dots{text-align:center;margin-top:14px;color:#6f91a8;font-size:11px}
 .running-card{max-width:700px;margin:16px auto 0;text-align:center;padding:27px 20px;border-radius:24px}.running-number{font-size:clamp(48px,11vw,70px);font-weight:950;line-height:1;background:linear-gradient(100deg,#fff,#78d2ff,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0}
 @media(max-width:600px){.sender-grid{grid-template-columns:1fr}.sendmoney-box{grid-template-columns:38px 1fr 34px}.sendmoney-logo{width:34px;height:34px}.review-card{flex-basis:88vw}}
+
+.social-fallback{width:100%;height:100%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff}
+.social img{width:100%;height:100%;object-fit:contain}
 </style>
 
 <style id="v13-refinements">
@@ -1271,7 +1274,14 @@ function renderContactLinks(){
   const wrap=document.getElementById('contactSocials');
   if(!wrap)return;
   const items=Object.entries(SITE_CONFIG.social||{});
-  wrap.innerHTML=items.filter(([_,x])=>x&&x.enabled&&x.url).map(([key,x])=>`<a class="social" href="${x.url}" target="_blank" rel="noopener" aria-label="${x.label||key}">${x.icon?`<img src="${x.icon}" alt="${x.label||key}" onerror="this.remove()">`:(x.label||key[0]).charAt(0).toUpperCase()}</a>`).join('');
+  wrap.innerHTML=items.filter(([_,x])=>x&&x.enabled&&x.url).map(([key,x])=>{
+    const label=x.label||key;
+    const fallback=(label||key||'S').charAt(0).toUpperCase();
+    const icon=x.icon
+      ? `<img src="${x.icon}" alt="${label}" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'">`
+      : '';
+    return `<a class="social" href="${x.url}" target="_blank" rel="noopener" aria-label="${label}">${icon}<span class="social-fallback" style="${x.icon?'display:none':''}">${fallback}</span></a>`;
+  }).join('');
 }
 
 function animateCustomerCount(){
