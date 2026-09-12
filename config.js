@@ -15,10 +15,17 @@ const SITE_CONFIG = {
 
   // URL + enabled=true থাকলেই account দেখাবে। icon/logo optional; না থাকলে letter fallback দেখাবে.
   social: {
-    facebook: { enabled: false, url: 'https://www.facebook.com/growlanceragency', icon: 'assets/facebook.png', label: 'https://www.facebook.com/growlanceragency' },
-    whatsapp: { enabled: false, url: '09638-397712', icon: 'assets/whatsapp.png', label: '09638-397712' },
+    facebook: { enabled: true, url: 'https://www.facebook.com/growlanceragency', icon: 'assets/facebook.png', label: 'Facebook' },
+    whatsapp: { enabled: true, url: 'https://wa.me/01400101005', icon: 'assets/whatsapp.png', label: 'WhatsApp' },
     instagram: { enabled: false, url: '', icon: 'assets/instagram.png', label: 'Instagram' },
-    email: { enabled: false, url: 'growlanceragency@gmail.com', icon: 'assets/email.png', label: 'growlanceragency@gmail.com' }
+    email: { enabled: true, url: 'mailto:growlanceragency@gmail.com', icon: 'assets/email.png', label: 'Email' }
+  },
+
+  // শেষের CTA-তে Order Now-এর পাশের Message বাটনের লিংক
+  messageButton: {
+    enabled: true,
+    url: 'https://m.me/growlanceragency',
+    label: 'Message'
   },
 
   sendMoney: {
