@@ -548,6 +548,12 @@ body{overflow-x:hidden}
 .sender-grid input::placeholder{color:rgba(255,255,255,.55)!important;-webkit-text-fill-color:rgba(255,255,255,.55)!important}
 @media(max-width:600px){.payable-line{max-width:100%}.payable-line strong{font-size:17px!important}}
 </style>
+
+<style id="final-order-input-fix">
+#senderNumber,#transactionId{color:#fff !important;caret-color:#fff !important;}
+#senderNumber::placeholder,#transactionId::placeholder{color:#9fb0c4 !important;opacity:1;}
+.confirm-order-btn:disabled{opacity:.65;cursor:wait;}
+</style>
 </head>
 <body>
 
@@ -858,11 +864,18 @@ body{overflow-x:hidden}
     </div>
    </div>
 
-   <div class="confirm-actions"><button class="btn btn-primary" onclick="confirmOrder()">অর্ডার কনফার্ম করুন →</button><button class="btn btn-secondary" onclick="backToOrderForm()">← তথ্য পরিবর্তন</button></div>
+   <div class="confirm-actions"><button class="btn btn-primary confirm-order-btn" onclick="confirmOrder()">অর্ডার কনফার্ম করুন →</button><button class="btn btn-secondary" onclick="backToOrderForm()">← তথ্য পরিবর্তন</button></div>
   </div>
  </div>
 </div>
 
+<script>
+const ORDER_CONFIG = {
+  // Google Apps Script Web App URL বসানোর জায়গা।
+  // নিচের URL-টি Apps Script deploy করার পর পাওয়া যাবে।
+  googleSheetsWebAppUrl: 'https://script.google.com/macros/s/AKfycbyu1tcGp6XwtvJokZT27BJvyAizQPEvA-pcu7Op9WoTXWtoLZO1JSkjYmel-wBeQcgI/exec'
+};
+</script>
 <script>
 const orderState={service:'General',package:'Custom',price:'Requirement অনুযায়ী'};
 const contactLinks={facebook:'',whatsapp:'',instagram:'',email:''};
@@ -1067,9 +1080,48 @@ function confirmOrder(){
  if(!tx){alert('TxnID দিন।');return;}
  let plan='full'; if(service!=='Facebook BD Followers')plan=document.querySelector('input[name="sendPlan"]:checked')?.value||'advance';
  const base=o.amount||0; const sendAmount=base?Math.ceil(base*(plan==='full'?1:.5)):null; const amountText=sendAmount?'৳'+sendAmount.toLocaleString():'Final amount after confirmation'; const method=document.querySelector('input[name="sendMethod"]:checked')?.value||'bKash';
- const msg=(o.text||'Growlancer Agency Order Request')+`\n\nSend Money Method: ${method}\nSend Money: ${plan==='full'?'Full (100%)':'Advance (50%)'}\nSend Money Amount: ${amountText}\nSender Number: ${sender}\nTxnID: ${tx}\nSend Money Number: 01400101005`;
+ const orderId='GA-'+Date.now().toString().slice(-8)+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+ const f=document.querySelector('#orderModal form');
+ const fd=f?new FormData(f):null;
+ const payload={
+   orderId,
+   submittedAt:new Date().toISOString(),
+   service,
+   package:o.pkg||'Custom',
+   totalAmount:base||'',
+   sendMoneyPlan:plan==='full'?'100% Full':'50% Advance',
+   sendMoneyAmount:sendAmount||'',
+   sendMoneyMethod:method,
+   sendMoneyNumber:'01400101005',
+   name:fd?.get('name')||'',
+   phone:fd?.get('phone')||'',
+   link:fd?.get('link')||'',
+   budget:fd?.get('budget')||'',
+   deadline:fd?.get('deadline')||'',
+   quantity:fd?.get('quantity')||'',
+   requirements:fd?.get('requirements')||'',
+   senderNumber:sender,
+   txnId:tx,
+   status:'Pending'
+ };
+ const msg=(o.text||'Growlancer Agency Order Request')+`\n\nOrder ID: ${orderId}\nSend Money Method: ${method}\nSend Money: ${payload.sendMoneyPlan}\nSend Money Amount: ${amountText}\nSender Number: ${sender}\nTxnID: ${tx}\nSend Money Number: 01400101005`;
  if(navigator.clipboard)navigator.clipboard.writeText(msg).catch(()=>{});
- alert('অর্ডার কনফার্ম করার তথ্য প্রস্তুত হয়েছে।\n\nSend Money Amount: '+amountText+'\nTxnID: '+tx+'\n\nOrder details clipboard-এ copy করা হয়েছে।');
+ const url=String(ORDER_CONFIG.googleSheetsWebAppUrl||'').trim();
+ if(!url || url.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT')){
+   alert('অর্ডারটি প্রস্তুত হয়েছে, কিন্তু Google Sheets সংযোগ এখনো সেটআপ করা হয়নি।\n\nOrder ID: '+orderId+'\nSend Money Amount: '+amountText+'\nTxnID: '+tx);
+   return;
+ }
+ const btn=document.querySelector('#orderConfirmation .confirm-order-btn');
+ if(btn){btn.disabled=true;btn.textContent='অর্ডার পাঠানো হচ্ছে…';}
+ fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
+   .then(()=>{
+     alert('অর্ডার সফলভাবে পাঠানো হয়েছে।\n\nOrder ID: '+orderId+'\nSend Money Amount: '+amountText+'\n\nআপনার order details clipboard-এ copy করা হয়েছে।');
+     if(btn){btn.disabled=false;btn.textContent='অর্ডার কনফার্ম করুন →';}
+   })
+   .catch(()=>{
+     if(btn){btn.disabled=false;btn.textContent='অর্ডার কনফার্ম করুন →';}
+     alert('অর্ডার পাঠানো যায়নি। Internet connection এবং Google Sheets setup চেক করুন।');
+   });
 }
 
 function switchServicePackage(btn){
