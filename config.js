@@ -9,21 +9,22 @@
 const SITE_CONFIG = {
   brand: {
     name: 'Growlancer Agency',
-    logo: 'assets/logo.jpg',
+    logo: 'assets/logo.png',
     favicon: 'assets/favicon.png'
   },
 
+  // URL + enabled=true থাকলেই account দেখাবে। icon/logo optional; না থাকলে letter fallback দেখাবে.
   social: {
-    facebook: { enabled: false, url: '', icon: 'assets/facebook.png', label: 'https://www.facebook.com/growlanceragency' },
-    whatsapp: { enabled: false, url: '', icon: 'assets/whatsapp.png', label: '09638-397712' },
+    facebook: { enabled: false, url: '', icon: 'assets/facebook.png', label: 'Facebook' },
+    whatsapp: { enabled: false, url: '', icon: 'assets/whatsapp.png', label: 'WhatsApp' },
     instagram: { enabled: false, url: '', icon: 'assets/instagram.png', label: 'Instagram' },
-    email: { enabled: false, url: '', icon: 'assets/email.png', label: 'growlanceragency@gmail.com' }
+    email: { enabled: false, url: '', icon: 'assets/email.png', label: 'Email' }
   },
 
   sendMoney: {
     bKash: { enabled: true, number: '01400101005', logo: 'assets/bkash.png', fallbackIcon: 'bK' },
     Nagad: { enabled: true, number: '01400101005', logo: 'assets/nagad.png', fallbackIcon: 'N' },
-    Rocket: { enabled: true, number: '01400101005', logo: 'assets/rocket.jpg', fallbackIcon: 'R' }
+    Rocket: { enabled: true, number: '01400101005', logo: 'assets/rocket.png', fallbackIcon: 'R' }
   },
 
   services: {
