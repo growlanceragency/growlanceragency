@@ -1,11 +1,3 @@
-/* =========================================================
-   GROWLANCER AGENCY — EASY EDIT SETTINGS
-   ---------------------------------------------------------
-   এই ফাইল থেকেই website-এর Logo, Social Link, Icons,
-   Send Money number/logo, Service, Package, Price, Demo,
-   Reviews ইত্যাদি পরিবর্তন করুন। index.html edit করার দরকার নেই।
-   ========================================================= */
-
 const SITE_CONFIG = {
   brand: {
     name: 'Growlancer Agency',
@@ -37,7 +29,17 @@ const SITE_CONFIG = {
   services: {
     'Facebook Page Setup': {
       id: 'service-page', number: 'SERVICE 01', icon: 'f', iconImage: 'assets/facebook-page.png',
-      description: 'আপনার business page-কে professional ও ready-to-grow করার complete setup.',
+      description: 'আপনার business অনুযায়ী professional ও ready-to-grow Facebook Page setup.',
+      whatWeBuild: [
+        { title: 'Retail / Shop', text: 'Shop & Products', icon: '▣' },
+        { title: 'Food / Restaurant', text: 'Food Business', icon: '♨' },
+        { title: 'Fashion / Clothing', text: 'Fashion Brand', icon: '◇' },
+        { title: 'Beauty / Salon', text: 'Beauty Services', icon: '✦' },
+        { title: 'Education', text: 'Course & Coaching', icon: '▤' },
+        { title: 'Real Estate', text: 'Property Business', icon: '⌂' },
+        { title: 'Service Business', text: 'Professional Services', icon: '⚙' },
+        { title: 'Personal Brand', text: 'Build Your Identity', icon: '●' }
+      ],
       divider: '',
       demo: { enabled: false, type: 'url', url: '', title: 'Facebook Page Setup Demo', buttonText: 'Demo দেখুন ↗', images: [] },
       packages: [
@@ -48,11 +50,21 @@ const SITE_CONFIG = {
       benefits: ['Professional Page Setup', 'Logo & Cover Setup', 'About & Basic Information', 'CTA & Category Setup', 'Basic SEO Optimization']
     },
 
-    'Website Service': {
+    'Website': {
       id: 'service-website', number: 'SERVICE 02', icon: '⌘', iconImage: 'assets/website.png',
-      description: 'Clean, modern, responsive ও customer-friendly business website.',
-      divider: 'WEBSITE SERVICE',
-      demo: { enabled: false, type: 'url', url: '', title: 'Website Service Demo', buttonText: 'Demo দেখুন ↗', images: [] },
+      description: 'Business থেকে Portfolio—আপনার প্রয়োজন অনুযায়ী modern, responsive ও professional website তৈরি করি.',
+      whatWeBuild: [
+        { title: 'Business Website', text: 'Grow Your Business', icon: '⌂' },
+        { title: 'Personal Portfolio', text: 'Showcase Your Skills', icon: '●' },
+        { title: 'Creative Portfolio', text: 'Display Your Creativity', icon: '✦' },
+        { title: 'Corporate Website', text: 'Build Your Brand', icon: '▦' },
+        { title: 'Landing Page', text: 'More Leads, More Sales', icon: '◉' },
+        { title: 'Product / Service', text: 'Showcase Your Offers', icon: '◆' },
+        { title: 'Responsive Website', text: 'Looks Great on All Devices', icon: '▯' },
+        { title: 'Custom Website', text: 'As Per Your Need', icon: '⚙' }
+      ],
+      divider: 'WEBSITE',
+      demo: { enabled: false, type: 'url', url: '', title: 'Website Demo', buttonText: 'Demo দেখুন ↗', images: [] },
       packages: [
         { name: 'Basic', price: '৳2,500', subtitle: 'Simple business website-এর জন্য', suffix: 'starting' },
         { name: 'Premium', price: '৳5,000', subtitle: 'Growing business-এর জন্য', suffix: 'starting' },
