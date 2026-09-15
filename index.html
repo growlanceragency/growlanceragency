@@ -888,7 +888,7 @@ html{scroll-behavior:auto;}
      <option>Creative Portfolio</option>
      <option>Corporate Website</option>
      <option>Landing Page</option>
-     <option>Product / Service Website</option>
+     <option>Product / Service</option>
      <option>Custom Website</option>
     </select>
    </label>
@@ -1055,7 +1055,8 @@ const SITE_CONFIG = {
         { title: 'Education', text: 'Course & Coaching', icon: '▤' },
         { title: 'Real Estate', text: 'Property Business', icon: '⌂' },
         { title: 'Service Business', text: 'Professional Services', icon: '⚙' },
-        { title: 'Personal Brand', text: 'Build Your Identity', icon: '●' }
+        { title: 'Personal Brand', text: 'Build Your Identity', icon: '●' },
+        { title: 'Other / Custom', text: 'Custom Page Setup', icon: '✦' }
       ],
       divider: '',
       demo: { enabled: false, type: 'url', url: '', title: 'Facebook Page Setup Demo', buttonText: 'Demo দেখুন ↗', images: [] },
@@ -1394,6 +1395,8 @@ function confirmOrder(){
    orderId,
    submittedAt:new Date().toISOString(),
    service,
+   websiteType:service==='Website'?(fd?.get('websiteType')||''):'',
+   facebookPageType:service==='Facebook Page Setup'?(fd?.get('facebookPageType')||''):'',
    package:o.pkg||'Custom',
    totalAmount:base||'',
    sendMoneyPlan:plan==='full'?'100% Full':'50% Advance',
@@ -1406,7 +1409,7 @@ function confirmOrder(){
    budget:fd?.get('budget')||'',
    deadline:fd?.get('deadline')||'',
    quantity:fd?.get('quantity')||'',
-   requirements:service==='Website'&&fd?.get('websiteType')?`Website Type: ${fd.get('websiteType')}\n${fd?.get('requirements')||''}`:(fd?.get('requirements')||''),
+   requirements:fd?.get('requirements')||'',
    senderNumber:sender,
    txnId:tx,
    status:'Pending'
