@@ -38,7 +38,8 @@ const SITE_CONFIG = {
         { title: 'Education', text: 'Course & Coaching', icon: '▤' },
         { title: 'Real Estate', text: 'Property Business', icon: '⌂' },
         { title: 'Service Business', text: 'Professional Services', icon: '⚙' },
-        { title: 'Personal Brand', text: 'Build Your Identity', icon: '●' }
+        { title: 'Personal Brand', text: 'Build Your Identity', icon: '●' },
+        { title: 'Other / Custom', text: 'Custom Page Setup', icon: '✦' }
       ],
       divider: '',
       demo: { enabled: false, type: 'url', url: '', title: 'Facebook Page Setup Demo', buttonText: 'Demo দেখুন ↗', images: [] },
