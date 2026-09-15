@@ -578,8 +578,8 @@ body{overflow-x:hidden}
 </style>
 
 <style id="final-order-input-fix">
-#senderNumber,#transactionId{color:#fff !important;caret-color:#fff !important;}
-#senderNumber::placeholder,#transactionId::placeholder{color:#9fb0c4 !important;opacity:1;}
+#transactionId{color:#fff !important;caret-color:#fff !important;}
+#transactionId::placeholder{color:#9fb0c4 !important;opacity:1;}
 .confirm-order-btn:disabled{opacity:.65;cursor:wait;}
 
 /* Easy-edit assets */
@@ -631,6 +631,12 @@ html{scroll-behavior:auto;}
   html{scroll-behavior:auto !important}
   .js-reveal-ready .service-page,.js-reveal-ready .section-head,.js-reveal-ready .featured-service,.js-reveal-ready .why-main,.js-reveal-ready .point,.js-reveal-ready .stat,.js-reveal-ready .final-cta,.js-reveal-ready .demo,.js-reveal-ready .review-card{opacity:1;transform:none;transition:none}
 }
+</style>
+
+<style id="final-sheet-ui-fix">
+.sender-grid.single-txnid{grid-template-columns:1fr!important}
+.sender-grid.single-txnid label{text-align:center!important}
+.sender-grid.single-txnid input{text-align:center!important}
 </style>
 </head>
 <body>
@@ -911,7 +917,7 @@ html{scroll-behavior:auto;}
    <input id="selectedPrice" name="price" type="hidden">
 
    <label>আপনার নাম <input name="name" required placeholder="আপনার নাম"></label>
-   <label>WhatsApp / ফোন নম্বর <input name="phone" required inputmode="tel" placeholder="01XXXXXXXXX"></label>
+   <label>WhatsApp / ফোন নম্বর <input name="phone" required type="text" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"></label>
    <label>Facebook Page / Website Link <input name="link" placeholder="https://..."></label>
 
    <div class="two-fields">
@@ -976,12 +982,10 @@ html{scroll-behavior:auto;}
 
     <div class="sendmoney-howto">
      <div><b>১</b><span>উপরের নম্বরে <strong>Send Money</strong> করুন</span></div>
-     <div><b>২</b><span>যে নম্বর থেকে টাকা দিয়েছেন সেটি নিচে দিন</span></div>
-     <div><b>৩</b><span>TxnID দিয়ে অর্ডার কনফার্ম করুন</span></div>
+          <div><b>২</b><span>TxnID দিয়ে অর্ডার কনফার্ম করুন</span></div>
     </div>
 
-    <div class="sender-grid">
-     <label>যে নম্বর থেকে Send Money করেছেন<input id="senderNumber" inputmode="tel" placeholder="01XXXXXXXXX" required></label>
+    <div class="sender-grid single-txnid">
      <label>Transaction ID<input id="transactionId" placeholder="TxnID লিখুন" required></label>
     </div>
    </div>
@@ -1365,7 +1369,7 @@ function submitOrder(e){
    const advance=document.querySelector('input[name="sendPlan"][value="advance"]'); if(advance)advance.checked=true;
  }
  updateSendMoneyAmount();
- document.getElementById('senderNumber').value=''; document.getElementById('transactionId').value='';
+ document.getElementById('transactionId').value='';
  switchSendMoneyMethod('bKash');
  form.style.display='none'; document.getElementById('orderConfirmation').style.display='block';
 }
@@ -1383,8 +1387,7 @@ function copySendNumber(number,name){
 function confirmOrder(){
  const o=window.currentOrderForm||{}; const service=o.service||'';
  if(!service){alert('Service নির্বাচন করুন।');return;}
- const sender=document.getElementById('senderNumber')?.value.trim()||''; const tx=document.getElementById('transactionId')?.value.trim()||'';
- if(!sender){alert('যে নম্বর থেকে Send Money করেছেন সেটি দিন।');return;}
+ const tx=document.getElementById('transactionId')?.value.trim()||'';
  if(!tx){alert('TxnID দিন।');return;}
  let plan='full'; if(service!=='Facebook BD Followers')plan=document.querySelector('input[name="sendPlan"]:checked')?.value||'advance';
  const base=o.amount||0; const sendAmount=base?Math.ceil(base*(plan==='full'?1:.5)):null; const amountText=sendAmount?'৳'+sendAmount.toLocaleString():'Final amount after confirmation'; const method=document.querySelector('input[name="sendMethod"]:checked')?.value||'bKash';
@@ -1410,11 +1413,10 @@ function confirmOrder(){
    deadline:fd?.get('deadline')||'',
    quantity:fd?.get('quantity')||'',
    requirements:fd?.get('requirements')||'',
-   senderNumber:sender,
    txnId:tx,
    status:'Pending'
  };
- const msg=(o.text||'Growlancer Agency Order Request')+`\n\nOrder ID: ${orderId}\nSend Money Method: ${method}\nSend Money: ${payload.sendMoneyPlan}\nSend Money Amount: ${amountText}\nSender Number: ${sender}\nTxnID: ${tx}\nSend Money Number: 01400101005`;
+ const msg=(o.text||'Growlancer Agency Order Request')+`\n\nOrder ID: ${orderId}\nSend Money Method: ${method}\nSend Money: ${payload.sendMoneyPlan}\nSend Money Amount: ${amountText}\nTxnID: ${tx}\nSend Money Number: 01400101005`;
  if(navigator.clipboard)navigator.clipboard.writeText(msg).catch(()=>{});
  const url=String(ORDER_CONFIG.googleSheetsWebAppUrl||'').trim();
  if(!url || url.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT')){
