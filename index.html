@@ -105,7 +105,6 @@ footer{padding:24px 0 18px;border-top:1px solid rgba(255,255,255,.08);margin-top
  .nav-links{display:none}.hero-grid,.why{grid-template-columns:1fr}.hero{padding-top:60px}
  .demo-grid{grid-template-columns:1fr 1fr}
 }
-.what-build-grid{grid-template-columns:repeat(2,1fr)}.what-build-head h4{font-size:16px}.what-build-item{padding:10px 6px}
 @media(max-width:600px){
  header{top:8px}.hero{padding:55px 0 35px}section{padding:55px 0}
  .hero-visual{min-height:320px}.cover{min-height:280px}
@@ -309,7 +308,7 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .service-heading>div{min-width:0}
 .service-heading h3{margin:3px 0 0;font-size:20px;line-height:1.2}
 .service-description{margin:11px 0 15px;color:#9eb3c6;font-size:12px;line-height:1.7}
-.what-we-build{margin:10px 0 12px;padding:10px 11px;border:1px solid rgba(12,146,255,.14);border-radius:16px;background:linear-gradient(145deg,rgba(12,146,255,.055),rgba(255,255,255,.018))}.what-build-head{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px}.what-build-head-content{min-width:0}.what-build-head .mini-kicker{display:block;margin-bottom:2px;color:#58c5ff;font-size:8px}.what-build-head h4{margin:0;font-size:13px;line-height:1.3}.what-build-head p{margin:3px 0 0;color:#91a8bc;font-size:9px;line-height:1.35}.what-build-toggle{width:28px;height:28px;flex:0 0 28px;border:1px solid rgba(88,197,255,.22);border-radius:9px;background:rgba(12,146,255,.08);color:#58c5ff;display:grid;place-items:center;font-size:15px;font-weight:800;transition:transform .25s ease,background .25s ease}.what-we-build.open .what-build-toggle{transform:rotate(180deg);background:rgba(12,146,255,.15)}.what-build-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;max-height:0;overflow:hidden;opacity:0;transform:translateY(-4px);transition:max-height .3s ease,opacity .2s ease,transform .3s ease;margin-top:0}.what-we-build.open .what-build-grid{max-height:500px;opacity:1;transform:translateY(0);margin-top:8px}.what-build-item{padding:7px 5px;border:1px solid rgba(255,255,255,.06);border-radius:10px;background:rgba(255,255,255,.02);text-align:center}.what-build-item .wb-icon{width:24px;height:24px;margin:0 auto 4px;border-radius:7px;display:grid;place-items:center;background:rgba(12,146,255,.11);color:#58c5ff;font-weight:900;font-size:11px}.what-build-item strong{display:block;font-size:8px;color:#eaf4ff;line-height:1.25}.what-build-item span{display:block;margin-top:2px;color:#71889d;font-size:7px;line-height:1.2}.service-package-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border:1px solid rgba(255,255,255,.09);background:rgba(4,19,32,.38);border-radius:18px;touch-action:pan-y;user-select:none}
+.service-package-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border:1px solid rgba(255,255,255,.09);background:rgba(4,19,32,.38);border-radius:18px;touch-action:pan-y;user-select:none}
 .service-package-tabs button{border:0;background:transparent;color:#91a8bc;border-radius:13px;padding:12px 5px;font-size:12px;font-weight:800;cursor:pointer}
 .service-package-tabs button.active{color:#fff;background:linear-gradient(135deg,#0C92FF,#0879f0);box-shadow:0 7px 22px rgba(12,146,255,.25)}
 .service-price-card{margin-top:12px;padding:20px 18px 17px;border:1px solid rgba(255,255,255,.09);border-radius:22px;background:linear-gradient(145deg,rgba(21,39,53,.9),rgba(13,27,39,.92));box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
@@ -401,11 +400,6 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 
 .social-fallback{width:100%;height:100%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff}
 .social img{width:100%;height:100%;object-fit:contain}
-
-/* Website type selector */
-#websiteTypeWrap{display:block}
-#websiteTypeWrap[style*="display:none"]{display:none!important}
-.website-type-note{font-size:11px;color:var(--muted);margin-top:5px}
 </style>
 
 <style id="v13-refinements">
@@ -578,8 +572,8 @@ body{overflow-x:hidden}
 </style>
 
 <style id="final-order-input-fix">
-#transactionId{color:#fff !important;caret-color:#fff !important;}
-#transactionId::placeholder{color:#9fb0c4 !important;opacity:1;}
+#senderNumber,#transactionId{color:#fff !important;caret-color:#fff !important;}
+#senderNumber::placeholder,#transactionId::placeholder{color:#9fb0c4 !important;opacity:1;}
 .confirm-order-btn:disabled{opacity:.65;cursor:wait;}
 
 /* Easy-edit assets */
@@ -632,13 +626,6 @@ html{scroll-behavior:auto;}
   .js-reveal-ready .service-page,.js-reveal-ready .section-head,.js-reveal-ready .featured-service,.js-reveal-ready .why-main,.js-reveal-ready .point,.js-reveal-ready .stat,.js-reveal-ready .final-cta,.js-reveal-ready .demo,.js-reveal-ready .review-card{opacity:1;transform:none;transition:none}
 }
 </style>
-
-<style id="final-payment-ui-fix">
-.payment-identifiers{grid-template-columns:1fr 1fr!important}
-.payment-identifiers label{text-align:center!important}
-.payment-identifiers input{text-align:center!important}
-@media(max-width:600px){.payment-identifiers{grid-template-columns:1fr!important}}
-</style>
 </head>
 <body>
 
@@ -689,17 +676,6 @@ html{scroll-behavior:auto;}
    <article class="service-page glass" id="service-page" data-service="Facebook Page Setup">
     <div class="service-page-head"><div class="service-heading"><span class="service-icon">f</span><div><span class="mini-kicker">SERVICE 01</span><h3>Facebook Page Setup</h3></div></div><button class="demo-link" onclick="openDemo('Facebook Page Setup')">Demo দেখুন ↗</button></div>
     <p class="service-description">আপনার business page-কে professional ও ready-to-grow করার complete setup.</p>
-<div class="what-we-build">
-  <div class="what-build-head" role="button" tabindex="0" aria-expanded="false" aria-controls="facebookBuildOptions">
-   <div class="what-build-head-content">
-    <span class="mini-kicker">WHAT WE BUILD</span>
-    <h4>কী ধরনের Page লাগবে?</h4>
-    <p>দেখতে এখানে ক্লিক করুন</p>
-   </div>
-   <button type="button" class="what-build-toggle" aria-label="What We Build দেখুন">⌄</button>
-  </div>
-  <div class="what-build-grid" id="facebookBuildOptions"></div>
-</div>
     <div class="service-package-tabs" data-package-key="fb">
      <button class="active" data-pkg="Basic" data-price="৳750" data-sub="নতুন business / উদ্যোক্তার জন্য">Basic</button>
      <button data-pkg="Premium" data-price="৳1,200" data-sub="Growing business-এর জন্য">Premium</button>
@@ -715,23 +691,16 @@ html{scroll-behavior:auto;}
 
    <div class="service-divider" aria-hidden="true"><span>WEBSITE SERVICE</span></div>
 
-   <article class="service-page glass" id="service-website" data-service="Website">
-    <div class="service-page-head"><div class="service-heading"><span class="service-icon">⌘</span><div><span class="mini-kicker">SERVICE 02</span><h3>Website</h3></div></div><button class="demo-link" onclick="openDemo('Website')">Demo দেখুন ↗</button></div>
-    <p class="service-description">Business থেকে Portfolio—আপনার প্রয়োজন অনুযায়ী modern, responsive ও professional website তৈরি করি.</p>
-    <div class="what-we-build">
-      <div class="what-build-head" role="button" tabindex="0" aria-expanded="false" aria-controls="websiteBuildOptions">
-       <div class="what-build-head-content"><span class="mini-kicker">WHAT WE BUILD</span><h4>কী ধরনের website লাগবে?</h4><p>দেখতে এখানে ক্লিক করুন</p></div>
-       <button type="button" class="what-build-toggle" aria-label="What We Build দেখুন">⌄</button>
-      </div>
-      <div class="what-build-grid" id="websiteBuildOptions"></div>
-    </div>
+   <article class="service-page glass" id="service-website" data-service="Website Service">
+    <div class="service-page-head"><div class="service-heading"><span class="service-icon">⌘</span><div><span class="mini-kicker">SERVICE 02</span><h3>Website Service</h3></div></div><button class="demo-link" onclick="openDemo('Website Service')">Demo দেখুন ↗</button></div>
+    <p class="service-description">Clean, modern, responsive ও customer-friendly business website.</p>
     <div class="service-package-tabs" data-package-key="web">
      <button class="active" data-pkg="Basic" data-price="৳2,500" data-sub="Simple business website-এর জন্য">Basic</button>
      <button data-pkg="Premium" data-price="৳5,000" data-sub="Growing business-এর জন্য">Premium</button>
      <button data-pkg="Corporate" data-price="Custom" data-sub="Advanced business website-এর জন্য">Corporate</button>
     </div>
     <div class="service-price-card">
-     <span class="price-label">BASIC</span><h4>Website</h4><p class="price-subtitle">Simple business website-এর জন্য</p>
+     <span class="price-label">BASIC</span><h4>Website Service</h4><p class="price-subtitle">Simple business website-এর জন্য</p>
      <div class="price-row"><strong>৳2,500</strong><span>starting</span></div>
      <ul class="service-benefits"><li>Responsive Website</li><li>Professional Modern Design</li><li>Mobile Friendly Layout</li><li>Essential Business Sections</li><li>Basic Support</li></ul>
      <button class="btn btn-primary order-wide">অর্ডার করুন →</button>
@@ -796,7 +765,7 @@ html{scroll-behavior:auto;}
   <div class="section-head compact-head"><span class="kicker">Demo & Portfolio</span><h2>কাজ আগে দেখুন</h2><p>এখানে real demo link দেওয়া যাবে। চাইলে Demo খুললে একাধিক sample image-ও দেখানো যাবে।</p></div>
   <div class="demo-grid">
    <a class="demo glass" href="#" onclick="openDemo('Facebook Page Setup');return false;"><div><span class="demo-type">LIVE / IMAGE</span><h3>Facebook Page Setup</h3><p>Demo দেখুন ↗</p></div></a>
-   <a class="demo glass" href="#" onclick="openDemo('Website');return false;"><div><span class="demo-type">LIVE / IMAGE</span><h3>Website</h3><p>Demo দেখুন ↗</p></div></a>
+   <a class="demo glass" href="#" onclick="openDemo('Website Service');return false;"><div><span class="demo-type">LIVE / IMAGE</span><h3>Website Service</h3><p>Demo দেখুন ↗</p></div></a>
    <a class="demo glass" href="#" onclick="openDemo('Social Media Poster Design');return false;"><div><span class="demo-type">IMAGE GALLERY</span><h3>Social Media Design</h3><p>Samples দেখুন ↗</p></div></a>
   </div>
  </div>
@@ -878,8 +847,8 @@ html{scroll-behavior:auto;}
 
   <form class="form-grid" onsubmit="submitOrder(event)">
    <label>কোন service লাগবে?
-<select id="orderServiceSelect" class="order-service-select" name="serviceSelect" onchange="changeOrderService(this.value)" required>
-     <option value="">Service নির্বাচন করুন</option><option>Facebook Page Setup</option><option>Website</option><option>Social Media Poster Design</option><option>Facebook BD Followers</option>
+    <select id="orderServiceSelect" class="order-service-select" name="serviceSelect" onchange="changeOrderService(this.value)" required>
+     <option value="">Service নির্বাচন করুন</option><option>Facebook Page Setup</option><option>Website Service</option><option>Social Media Poster Design</option><option>Facebook BD Followers</option>
     </select>
    </label>
    <label id="orderPackageWrap">কোন package লাগবে?
@@ -887,38 +856,13 @@ html{scroll-behavior:auto;}
      <option value="">আগে service নির্বাচন করুন</option>
     </select>
    </label>
-   <label id="websiteTypeWrap" style="display:none">কেমন Website লাগবে?
-    <select id="websiteTypeSelect" class="order-service-select" name="websiteType">
-     <option value="">Website-এর ধরন নির্বাচন করুন</option>
-     <option>Business Website</option>
-     <option>Personal Portfolio</option>
-     <option>Creative Portfolio</option>
-     <option>Corporate Website</option>
-     <option>Landing Page</option>
-     <option>Product / Service</option>
-     <option>Custom Website</option>
-    </select>
-   </label>
-   <label id="facebookPageTypeWrap" style="display:none">কী ধরনের Page লাগবে?
-    <select id="facebookPageTypeSelect" class="order-service-select" name="facebookPageType">
-     <option value="">Page-এর ধরন নির্বাচন করুন</option>
-     <option>Retail / Shop</option>
-     <option>Food / Restaurant</option>
-     <option>Fashion / Clothing</option>
-     <option>Beauty / Salon</option>
-     <option>Education</option>
-     <option>Real Estate</option>
-     <option>Service Business</option>
-     <option>Personal Brand</option>
-     <option>Other / Custom</option>
-    </select>
-   </label>
-<input id="selectedService" name="service" type="hidden">
+   <input id="selectedService" name="service" type="hidden">
    <input id="selectedPackage" name="package" type="hidden">
    <input id="selectedPrice" name="price" type="hidden">
 
    <label>আপনার নাম <input name="name" required placeholder="আপনার নাম"></label>
-   <label>WhatsApp / ফোন নম্বর <input name="phone" required type="text" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"></label>
+   <label>আপনার Email <input name="email" required type="email" autocomplete="email" placeholder="example@email.com"></label>
+   <label>WhatsApp / ফোন নম্বর <input name="phone" required inputmode="tel" placeholder="01XXXXXXXXX"></label>
    <label>Facebook Page / Website Link <input name="link" placeholder="https://..."></label>
 
    <div class="two-fields">
@@ -983,11 +927,12 @@ html{scroll-behavior:auto;}
 
     <div class="sendmoney-howto">
      <div><b>১</b><span>উপরের নম্বরে <strong>Send Money</strong> করুন</span></div>
-          <div><b>২</b><span>TxnID দিয়ে অর্ডার কনফার্ম করুন</span></div>
+     <div><b>২</b><span>যে নম্বর থেকে টাকা দিয়েছেন সেটি নিচে দিন</span></div>
+     <div><b>৩</b><span>TxnID দিয়ে অর্ডার কনফার্ম করুন</span></div>
     </div>
 
-    <div class="sender-grid payment-identifiers">
-     <label>যে নম্বর থেকে Send Money করেছেন<input id="senderNumber" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" required></label>
+    <div class="sender-grid">
+     <label>যে নম্বর থেকে Send Money করেছেন<input id="senderNumber" inputmode="tel" placeholder="01XXXXXXXXX" required></label>
      <label>Transaction ID<input id="transactionId" placeholder="TxnID লিখুন" required></label>
     </div>
    </div>
@@ -1012,133 +957,7 @@ html{scroll-behavior:auto;}
  </div>
 </div>
 
-<script>
-/* =========================================================
-   GROWLANCER AGENCY — EASY EDIT SETTINGS
-   ---------------------------------------------------------
-   এই ফাইল থেকেই website-এর Logo, Social Link, Icons,
-   Send Money number/logo, Service, Package, Price, Demo,
-   Reviews ইত্যাদি পরিবর্তন করুন। index.html edit করার দরকার নেই।
-   ========================================================= */
-
-const SITE_CONFIG = {
-  brand: {
-    name: 'Growlancer Agency',
-    logo: 'assets/logo.jpg',
-    favicon: 'assets/favicon.png'
-  },
-
-  // URL + enabled=true থাকলেই account দেখাবে। icon/logo optional; না থাকলে letter fallback দেখাবে.
-  social: {
-    facebook: { enabled: true, url: 'https://www.facebook.com/growlanceragency', icon: 'assets/facebook.png', label: 'Facebook' },
-    whatsapp: { enabled: true, url: 'https://wa.me/8801400101005', icon: 'assets/whatsapp.png', label: 'WhatsApp' },
-    instagram: { enabled: false, url: '', icon: 'assets/instagram.png', label: 'Instagram' },
-    email: { enabled: true, url: 'mailto:growlanceragency@gmail.com', icon: 'assets/email.png', label: 'Email' }
-  },
-
-  // শেষের CTA-তে Order Now-এর পাশের Message বাটনের লিংক
-  messageButton: {
-    enabled: true,
-    url: 'https://m.me/growlanceragency',
-    label: 'Message'
-  },
-
-  sendMoney: {
-    bKash: { enabled: true, number: '01400101005', logo: 'assets/bkash.png', fallbackIcon: 'bK' },
-    Nagad: { enabled: true, number: '01400101005', logo: 'assets/nagad.png', fallbackIcon: 'N' },
-    Rocket: { enabled: true, number: '01400101005', logo: 'assets/rocket.jpg', fallbackIcon: 'R' }
-  },
-
-  services: {
-    'Facebook Page Setup': {
-      id: 'service-page', number: 'SERVICE 01', icon: 'f', iconImage: 'assets/facebook-page.png',
-      description: 'আপনার business অনুযায়ী professional ও ready-to-grow Facebook Page setup.',
-      whatWeBuild: [
-        { title: 'Retail / Shop', text: 'Shop & Products', icon: '▣' },
-        { title: 'Food / Restaurant', text: 'Food Business', icon: '♨' },
-        { title: 'Fashion / Clothing', text: 'Fashion Brand', icon: '◇' },
-        { title: 'Beauty / Salon', text: 'Beauty Services', icon: '✦' },
-        { title: 'Education', text: 'Course & Coaching', icon: '▤' },
-        { title: 'Real Estate', text: 'Property Business', icon: '⌂' },
-        { title: 'Service Business', text: 'Professional Services', icon: '⚙' },
-        { title: 'Personal Brand', text: 'Build Your Identity', icon: '●' },
-        { title: 'Other / Custom', text: 'Custom Page Setup', icon: '✦' }
-      ],
-      divider: '',
-      demo: { enabled: false, type: 'url', url: '', title: 'Facebook Page Setup Demo', buttonText: 'Demo দেখুন ↗', images: [] },
-      packages: [
-        { name: 'Basic', price: '৳750', subtitle: 'নতুন business / উদ্যোক্তার জন্য', suffix: 'starting' },
-        { name: 'Premium', price: '৳1,200', subtitle: 'Growing business-এর জন্য', suffix: 'starting' },
-        { name: 'Corporate', price: '৳2,000', subtitle: 'Brand / organization-এর জন্য', suffix: 'starting' }
-      ],
-      benefits: ['Professional Page Setup', 'Logo & Cover Setup', 'About & Basic Information', 'CTA & Category Setup', 'Basic SEO Optimization']
-    },
-
-    'Website': {
-      id: 'service-website', number: 'SERVICE 02', icon: '⌘', iconImage: 'assets/website.png',
-      description: 'Business থেকে Portfolio—আপনার প্রয়োজন অনুযায়ী modern, responsive ও professional website তৈরি করি.',
-      whatWeBuild: [
-        { title: 'Business Website', text: 'Grow Your Business', icon: '⌂' },
-        { title: 'Personal Portfolio', text: 'Showcase Your Skills', icon: '●' },
-        { title: 'Creative Portfolio', text: 'Display Your Creativity', icon: '✦' },
-        { title: 'Corporate Website', text: 'Build Your Brand', icon: '▦' },
-        { title: 'Landing Page', text: 'More Leads, More Sales', icon: '◉' },
-        { title: 'Product / Service', text: 'Showcase Your Offers', icon: '◆' },
-        { title: 'Responsive Website', text: 'Looks Great on All Devices', icon: '▯' },
-        { title: 'Custom Website', text: 'As Per Your Need', icon: '⚙' }
-      ],
-      divider: 'WEBSITE',
-      demo: { enabled: false, type: 'url', url: '', title: 'Website Demo', buttonText: 'Demo দেখুন ↗', images: [] },
-      packages: [
-        { name: 'Basic', price: '৳2,500', subtitle: 'Simple business website-এর জন্য', suffix: 'starting' },
-        { name: 'Premium', price: '৳5,000', subtitle: 'Growing business-এর জন্য', suffix: 'starting' },
-        { name: 'Corporate', price: 'Custom', subtitle: 'Advanced business website-এর জন্য', suffix: 'requirement based' }
-      ],
-      benefits: ['Responsive Website', 'Professional Modern Design', 'Mobile Friendly Layout', 'Essential Business Sections', 'Basic Support']
-    },
-
-    'Social Media Poster Design': {
-      id: 'service-design', number: 'SERVICE 03', icon: '✦', iconImage: 'assets/poster-design.png',
-      description: 'একটি single design অথবা নিয়মিত monthly design package, আপনার প্রয়োজন অনুযায়ী।',
-      divider: 'SOCIAL MEDIA POSTER DESIGN',
-      demo: { enabled: false, type: 'images', url: '', title: 'Social Media Design Samples', buttonText: 'Demo দেখুন ↗', images: [] },
-      packages: [
-        { name: 'Single Design', price: '৳250', subtitle: 'একটি professional social media design', suffix: 'per design', tabLabel: 'Single' },
-        { name: 'Monthly Basic', price: '৳2,000', subtitle: 'Monthly content-এর জন্য', suffix: 'per month', tabLabel: 'Monthly' },
-        { name: 'Monthly Premium', price: '৳3,500', subtitle: 'Regular brand content-এর জন্য', suffix: 'per month', tabLabel: 'Premium' }
-      ],
-      benefits: ['Professional Poster Design', 'Brand-based Creative', 'Social Media Ready Size', 'Clean Typography & Layout', 'Revision Support']
-    },
-
-    'Facebook BD Followers': {
-      id: 'service-followers', number: 'SERVICE 04', icon: '+', iconImage: 'assets/followers.png',
-      description: '1K থেকে 20K পর্যন্ত আপনার প্রয়োজনের quantity নির্বাচন করে custom order করুন।',
-      divider: 'FACEBOOK BD FOLLOWERS',
-      demo: { enabled: false, type: 'url', url: '', title: 'Facebook BD Followers Details', buttonText: 'Details দেখুন ↗', images: [] },
-      packages: [],
-      followers: [
-        ['1K','৳199'],['2K','৳349'],['3K','৳499'],['4K','৳649'],['5K','৳799'],['6K','৳949'],['7K','৳1,099'],['8K','৳1,249'],['9K','৳1,399'],['10K','৳1,549'],['11K','৳1,699'],['12K','৳1,849'],['13K','৳1,999'],['14K','৳2,149'],['15K','৳2,299'],['16K','৳2,449'],['17K','৳2,599'],['18K','৳2,749'],['19K','৳2,899'],['20K','৳3,049']
-      ],
-      benefits: ['1K থেকে 20K quantity', 'Page Link দেওয়ার সুবিধা', 'Quantity অনুযায়ী price', 'Custom requirement দেওয়ার option', 'Order-এর আগে details confirm']
-    }
-  },
-
-  reviews: [
-    {name:'Client Name 01', role:'Business Owner', profile:'', text:'Page setup থেকে order পর্যন্ত পুরো process-টা খুব সহজ ছিল। কাজটাও clean ও professional হয়েছে।'},
-    {name:'Client Name 02', role:'Entrepreneur', profile:'', text:'Package আগে থেকেই পরিষ্কার ছিল, তাই নিজের প্রয়োজন অনুযায়ী option বেছে নিতে পেরেছি।'},
-    {name:'Client Name 03', role:'Business Owner', profile:'', text:'Design service নেওয়ার সময় requirement দেওয়ার ব্যবস্থা এবং communication খুব convenient লেগেছে।'},
-    {name:'Client Name 04', role:'Online Business Owner', profile:'', text:'কাজের presentation, communication এবং delivery process সবকিছুই বেশ organised লেগেছে।'},
-    {name:'Client Name 05', role:'Entrepreneur', profile:'', text:'নিজের business-এর প্রয়োজন অনুযায়ী service নেওয়া সহজ হয়েছে এবং পুরো experience ভালো ছিল।'},
-    {name:'Client Name 06', role:'Business Owner', profile:'', text:'Professional support এবং পরিষ্কার package information থাকার কারণে সিদ্ধান্ত নিতে সুবিধা হয়েছে।'}
-  ],
-
-  website: {
-    customerCount: 950,
-    primaryColor: '#0C92FF'
-  }
-};
-
-</script>
+<script src="config.js"></script>
 <script>
 const ORDER_CONFIG = {
   // Google Apps Script Web App URL বসানোর জায়গা।
@@ -1219,27 +1038,12 @@ function populateOrderPackages(service,selectedPkg=''){
 }
 function updateOrderFields(service,pkg,price,extraQty=''){
  const qty=document.getElementById('quantityWrap'); const qinput=document.getElementById('orderQuantity'); const budget=document.getElementById('orderBudget');
- const websiteWrap=document.getElementById('websiteTypeWrap'); const websiteSelect=document.getElementById('websiteTypeSelect');
  if(!qty||!qinput||!budget)return;
  const needsQty=(service==='Facebook BD Followers'||service==='Social Media Poster Design');
  qty.style.display=needsQty?'block':'none'; qinput.required=false; qinput.value=extraQty||'';
  if(price && price!=='Custom' && price!=='Requirement অনুযায়ী'){budget.value=price;budget.readOnly=true;}else{budget.value='';budget.readOnly=false;}
  budget.placeholder=price==='Custom'?'আপনার বাজেট লিখুন':'Package price অনুযায়ী auto-fill হবে';
  qinput.placeholder=service==='Facebook BD Followers'?'1K / 2K / 3K ... 20K':'যেমন: 5টি design';
- const needsWebsiteType=service==='Website';
- if(websiteWrap&&websiteSelect){
-   websiteWrap.style.display=needsWebsiteType?'block':'none';
-   websiteSelect.required=needsWebsiteType;
-   if(!needsWebsiteType)websiteSelect.value='';
- }
- const fbWrap=document.getElementById('facebookPageTypeWrap');
- const pageTypeInput=document.getElementById('facebookPageTypeSelect');
- const needsFacebookDetails=service==='Facebook Page Setup';
- if(fbWrap&&pageTypeInput){
-   fbWrap.style.display=needsFacebookDetails?'block':'none';
-   pageTypeInput.required=needsFacebookDetails;
-   if(!needsFacebookDetails)pageTypeInput.value='';
- }
 }
 function setOrderService(service,pkg,price,extraQty=''){
  orderState.service=service;orderState.package=pkg;orderState.price=price;
@@ -1341,38 +1145,25 @@ function submitOrder(e){
  const pkg=String(document.getElementById('selectedPackage')?.value||f.get('package')||'Custom');
  let raw=String(f.get('price')||''); let amount=parseInt(raw.replace(/[^0-9]/g,''),10)||0;
  if(service==='Facebook BD Followers'){const sel=document.getElementById('followerQuantity');const opt=sel?.options[sel.selectedIndex];if(opt){form.querySelector('[name="quantity"]').value=opt.value;amount=parseInt(String(opt.dataset.price||'').replace(/[^0-9]/g,''),10)||amount;}}
- window.currentOrderForm={text:`Growlancer Agency Order Request\n\nService: ${service}\nPackage: ${pkg}\nPrice shown: ${raw}\nName: ${f.get('name')}\nPhone/WhatsApp: ${f.get('phone')}\nPage/Website: ${f.get('link')||'N/A'}\nBudget: ${f.get('budget')||'N/A'}\nDeadline: ${f.get('deadline')||'N/A'}\nQuantity: ${f.get('quantity')||'N/A'}\nRequirements: ${service==='Website'&&f.get('websiteType')?`Website Type: ${f.get('websiteType')}\n${f.get('requirements')||'N/A'}`:service==='Facebook Page Setup'&&f.get('facebookPageType')?`Page Type: ${f.get('facebookPageType')}\n${f.get('requirements')||'N/A'}`:(f.get('requirements')||'N/A')}`,amount,service,pkg,price:raw};
+ window.currentOrderForm={text:`Growlancer Agency Order Request\n\nService: ${service}\nPackage: ${pkg}\nPrice shown: ${raw}\nName: ${f.get('name')}\nEmail: ${f.get('email')}\nPhone/WhatsApp: ${f.get('phone')}\nPage/Website: ${f.get('link')||'N/A'}\nBudget: ${f.get('budget')||'N/A'}\nDeadline: ${f.get('deadline')||'N/A'}\nQuantity: ${f.get('quantity')||'N/A'}\nRequirements: ${f.get('requirements')||'N/A'}`,amount,service,pkg,price:raw};
  const totalEl=document.getElementById('confirmTotalAmount');
  const payableEl=document.getElementById('confirmAmount');
  const planWrap=document.getElementById('sendMoneyPlanWrap'); const followerNote=document.getElementById('followerFullNote');
  const updateSendMoneyAmount=()=>{
    const selected=document.querySelector('input[name="sendPlan"]:checked')?.value||'advance';
-   const singleDesign=service==='Social Media Poster Design' && /Single Design/i.test(pkg);
-   const payable=amount?(service==='Facebook BD Followers'||singleDesign||selected==='full'?amount:Math.ceil(amount/2)):0;
+   const payable=amount?(service==='Facebook BD Followers'||selected==='full'?amount:Math.ceil(amount/2)):0;
    if(totalEl)totalEl.textContent=amount?'৳'+amount.toLocaleString():'Final amount after confirmation';
    if(payableEl)payableEl.textContent=payable?'৳'+payable.toLocaleString():'Final amount after confirmation';
  };
- const singleDesign=service==='Social Media Poster Design' && /Single Design/i.test(pkg);
  if(service==='Facebook BD Followers'){
    planWrap.style.display='none';followerNote.style.display='block';
- }else if(singleDesign){
-   planWrap.style.display='grid';followerNote.style.display='none';
-   const advance=document.querySelector('input[name="sendPlan"][value="advance"]');
-   if(advance){advance.checked=false; advance.closest('label')?.style.setProperty('display','none');}
-   const full=document.querySelector('input[name="sendPlan"][value="full"]');
-   if(full){full.checked=true; full.closest('label')?.style.setProperty('display','');}
-   document.querySelectorAll('input[name="sendPlan"]').forEach(r=>{r.onchange=updateSendMoneyAmount;});
  }else{
    planWrap.style.display='grid';followerNote.style.display='none';
-   document.querySelectorAll('input[name="sendPlan"]').forEach(r=>{
-     r.closest('label')?.style.setProperty('display','');
-     r.onchange=updateSendMoneyAmount;
-   });
    const advance=document.querySelector('input[name="sendPlan"][value="advance"]'); if(advance)advance.checked=true;
+   document.querySelectorAll('input[name="sendPlan"]').forEach(r=>{r.onchange=updateSendMoneyAmount;});
  }
  updateSendMoneyAmount();
- document.getElementById('transactionId').value='';
- document.getElementById('senderNumber').value='';
+ document.getElementById('senderNumber').value=''; document.getElementById('transactionId').value='';
  switchSendMoneyMethod('bKash');
  form.style.display='none'; document.getElementById('orderConfirmation').style.display='block';
 }
@@ -1390,9 +1181,8 @@ function copySendNumber(number,name){
 function confirmOrder(){
  const o=window.currentOrderForm||{}; const service=o.service||'';
  if(!service){alert('Service নির্বাচন করুন।');return;}
- const senderNumber=String(document.getElementById('senderNumber')?.value||'').replace(/৳/g,'').trim();
- const tx=document.getElementById('transactionId')?.value.trim()||'';
- if(!senderNumber){alert('যে নম্বর থেকে Send Money করেছেন সেই নম্বরটি দিন।');return;}
+ const sender=document.getElementById('senderNumber')?.value.trim()||''; const tx=document.getElementById('transactionId')?.value.trim()||'';
+ if(!sender){alert('যে নম্বর থেকে Send Money করেছেন সেটি দিন।');return;}
  if(!tx){alert('TxnID দিন।');return;}
  let plan='full'; if(service!=='Facebook BD Followers')plan=document.querySelector('input[name="sendPlan"]:checked')?.value||'advance';
  const base=o.amount||0; const sendAmount=base?Math.ceil(base*(plan==='full'?1:.5)):null; const amountText=sendAmount?'৳'+sendAmount.toLocaleString():'Final amount after confirmation'; const method=document.querySelector('input[name="sendMethod"]:checked')?.value||'bKash';
@@ -1401,10 +1191,8 @@ function confirmOrder(){
  const fd=f?new FormData(f):null;
  const payload={
    orderId,
-   submittedAt:new Date().toISOString().slice(0,10),
+   submittedAt:new Date().toISOString(),
    service,
-   websiteType:service==='Website'?(fd?.get('websiteType')||''):'',
-   facebookPageType:service==='Facebook Page Setup'?(fd?.get('facebookPageType')||''):'',
    package:o.pkg||'Custom',
    totalAmount:base||'',
    sendMoneyPlan:plan==='full'?'100% Full':'50% Advance',
@@ -1412,17 +1200,18 @@ function confirmOrder(){
    sendMoneyMethod:method,
    sendMoneyNumber:'01400101005',
    name:fd?.get('name')||'',
-   phone:String(fd?.get('phone')||'').replace(/৳/g,'').trim(),
+   email:fd?.get('email')||'',
+   phone:fd?.get('phone')||'',
    link:fd?.get('link')||'',
    budget:fd?.get('budget')||'',
    deadline:fd?.get('deadline')||'',
    quantity:fd?.get('quantity')||'',
    requirements:fd?.get('requirements')||'',
+   senderNumber:sender,
    txnId:tx,
-   senderNumber:senderNumber,
    status:'Pending'
  };
- const msg=(o.text||'Growlancer Agency Order Request')+`\n\nOrder ID: ${orderId}\nSend Money Method: ${method}\nSend Money: ${payload.sendMoneyPlan}\nSend Money Amount: ${amountText}\nTxnID: ${tx}\nSender Number: ${senderNumber}\nSend Money Number: 01400101005`;
+ const msg=(o.text||'Growlancer Agency Order Request')+`\n\nOrder ID: ${orderId}\nSend Money Method: ${method}\nSend Money: ${payload.sendMoneyPlan}\nSend Money Amount: ${amountText}\nSender Number: ${sender}\nTxnID: ${tx}\nSend Money Number: 01400101005`;
  if(navigator.clipboard)navigator.clipboard.writeText(msg).catch(()=>{});
  const url=String(ORDER_CONFIG.googleSheetsWebAppUrl||'').trim();
  if(!url || url.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT')){
@@ -1644,18 +1433,6 @@ function initSendMoneyLogos(){
  switchSendMoneyMethod(first);
 }
 
-function initWhatWeBuild(){
- document.querySelectorAll('.what-we-build').forEach(box=>{
-  const head=box.querySelector('.what-build-head');
-  const toggle=()=>{
-   const open=box.classList.toggle('open');
-   head.setAttribute('aria-expanded',open?'true':'false');
-  };
-  head.addEventListener('click',e=>{ if(e.target.closest('.what-build-toggle')) e.preventDefault(); toggle(); });
-  head.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();} });
- });
-}
-
 function applySiteConfig(){
   const brand=SITE_CONFIG.brand||{};
   const logoLink=document.querySelector('.logo');
@@ -1684,7 +1461,6 @@ function applySiteConfig(){
     const kicker=card.querySelector('.mini-kicker'); if(kicker)kicker.textContent=cfg.number||kicker.textContent;
     const title=card.querySelector('.service-heading h3'); if(title)title.textContent=name;
     const desc=card.querySelector('.service-description'); if(desc&&cfg.description)desc.textContent=cfg.description;
-    const wb=card.querySelector('.what-build-grid'); if(wb&&cfg.whatWeBuild){wb.innerHTML=cfg.whatWeBuild.map(x=>`<div class="what-build-item"><div class="wb-icon">${x.icon||'•'}</div><strong>${x.title||''}</strong><span>${x.text||''}</span></div>`).join('');}
     const demoBtn=card.querySelector('.demo-link'); if(demoBtn){demoBtn.textContent=cfg.demo?.buttonText||'Demo দেখুন ↗'; demoBtn.style.display=cfg.demo?.enabled?'':'inline-flex';}
     const tabs=card.querySelector('.service-package-tabs');
     if(tabs&&cfg.packages?.length){
@@ -1730,7 +1506,6 @@ function initScrollReveal(){
 
 function init(){
   applySiteConfig();
-  initWhatWeBuild();
   setupPackageControls();
   setupFollower();
   renderContactLinks();
@@ -1747,79 +1522,5 @@ document.addEventListener('keydown',e=>{
 
 document.addEventListener('DOMContentLoaded',init);
 </script>
-
-<style>
-.compact-build-toggle{
- width:100%;display:flex;align-items:center;justify-content:space-between;
- padding:8px 10px;border:1px solid rgba(255,255,255,.09);
- border-radius:10px;background:rgba(255,255,255,.035);color:#dceaf5;
- font:inherit;font-size:12px;cursor:pointer;text-align:left;
-}
-.compact-build-toggle .fb-chevron{font-size:14px;color:#7fa0b8}
-.compact-build-options{
- display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin-top:5px;
-}
-.compact-build-options button{
- border:1px solid rgba(255,255,255,.08);border-radius:8px;
- background:rgba(255,255,255,.025);color:#aecaDD;padding:6px 5px;
- font:inherit;font-size:10px;cursor:pointer;
-}
-.compact-build-options button.active{
- border-color:var(--blue,#0C92FF);background:rgba(12,146,255,.10);color:#fff;
-}
-</style>
-
-
-
-
-
-
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-  const svc=document.getElementById('orderServiceSelect');
-  const pkg=document.querySelector('#orderPackageSelect,#orderPackage,select[name="package"]');
-  function singleDesign(){
-    return svc && svc.value==='Social Media Poster Design' &&
-      pkg && /Single Design/i.test(pkg.value||pkg.options?.[pkg.selectedIndex]?.text||'');
-  }
-  function syncPayment(){
-    const only=singleDesign();
-    document.querySelectorAll('input[name="sendPlan"]').forEach(r=>{
-      const label=r.closest('label');
-      if(!label)return;
-      if(r.value==='advance'){
-        label.style.display=only?'none':'';
-        if(only)r.checked=false;
-      }
-      if(r.value==='full'){
-        label.style.display='';
-        if(only)r.checked=true;
-      }
-    });
-  }
-  if(svc)svc.addEventListener('change',syncPayment);
-  if(pkg)pkg.addEventListener('change',syncPayment);
-  syncPayment();
-});
-</script>
-
-
-<script id="glSingleDesignRule">
-document.addEventListener('DOMContentLoaded',function(){
- const svc=document.getElementById('orderServiceSelect');
- const pkg=document.querySelector('#orderPackageSelect,#orderPackage,select[name="package"]');
- function sync(){
-   const isSingle=svc&&svc.value==='Social Media Poster Design'&&pkg&&/Single Design/i.test(pkg.value||pkg.options?.[pkg.selectedIndex]?.text||'');
-   document.querySelectorAll('input[name="sendPlan"]').forEach(r=>{
-     const l=r.closest('label');
-     if(!l)return;
-     if(r.value==='advance'){l.style.display=isSingle?'none':''; if(isSingle)r.checked=false;}
-     if(r.value==='full'){l.style.display=''; if(isSingle)r.checked=true;}
-   });
- }
- svc?.addEventListener('change',sync); pkg?.addEventListener('change',sync); sync();
-});
-</script>
-
 </body>
 </html>
